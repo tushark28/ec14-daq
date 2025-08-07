@@ -1,5 +1,5 @@
 """
-EC14 Signal Processing Module
+EC316K Signal Processing Module
 Advanced signal processing for eddy current analysis including filtering, 
 defect detection, and frequency analysis
 """
@@ -21,23 +21,33 @@ class SignalProcessor:
         
     def setup_filters(self):
         """Setup digital filters for signal processing"""
-        # Low-pass filter
+        # Ensure sample rate is valid
+        if self.config.sample_rate <= 0:
+            self.config.sample_rate = 1000  # Default fallback
+        
+        # Calculate Nyquist frequency
+        nyquist = self.config.sample_rate / 2
+        
+        # Low-pass filter - normalize frequency properly
+        low_pass_freq = min(self.config.filters['low_pass_freq'], nyquist * 0.9)
         self.low_pass_b, self.low_pass_a = signal.butter(
             self.config.filters['filter_order'],
-            self.config.filters['low_pass_freq'] / (self.config.sample_rate / 2),
+            low_pass_freq / nyquist,
             btype='low'
         )
         
-        # High-pass filter
+        # High-pass filter - normalize frequency properly
+        high_pass_freq = min(self.config.filters['high_pass_freq'], nyquist * 0.9)
         self.high_pass_b, self.high_pass_a = signal.butter(
             self.config.filters['filter_order'],
-            self.config.filters['high_pass_freq'] / (self.config.sample_rate / 2),
+            high_pass_freq / nyquist,
             btype='high'
         )
         
         # Notch filter for power line interference
+        notch_freq = min(self.config.filters['notch_freq'], nyquist * 0.9)
         self.notch_b, self.notch_a = signal.iirnotch(
-            self.config.filters['notch_freq'],
+            notch_freq,
             30,  # Q factor
             self.config.sample_rate
         )
@@ -52,22 +62,27 @@ class SignalProcessor:
         
         filtered_data = data.copy()
         
-        # Apply notch filter
-        filtered_data = signal.filtfilt(self.notch_b, self.notch_a, filtered_data)
-        
-        # Apply high-pass filter
-        filtered_data = signal.filtfilt(self.high_pass_b, self.high_pass_a, filtered_data)
-        
-        # Apply low-pass filter
-        filtered_data = signal.filtfilt(self.low_pass_b, self.low_pass_a, filtered_data)
-        
-        # Apply moving average smoothing
-        if len(filtered_data) >= self.moving_avg_window:
-            filtered_data = signal.convolve(
-                filtered_data, 
-                np.ones(self.moving_avg_window) / self.moving_avg_window, 
-                mode='same'
-            )
+        try:
+            # Apply notch filter
+            filtered_data = signal.filtfilt(self.notch_b, self.notch_a, filtered_data)
+            
+            # Apply high-pass filter
+            filtered_data = signal.filtfilt(self.high_pass_b, self.high_pass_a, filtered_data)
+            
+            # Apply low-pass filter
+            filtered_data = signal.filtfilt(self.low_pass_b, self.low_pass_a, filtered_data)
+            
+            # Apply moving average smoothing
+            if len(filtered_data) >= self.moving_avg_window:
+                filtered_data = signal.convolve(
+                    filtered_data, 
+                    np.ones(self.moving_avg_window) / self.moving_avg_window, 
+                    mode='same'
+                )
+        except Exception as e:
+            print(f"Filter application error: {e}")
+            # Return original data if filtering fails
+            return data
         
         return filtered_data
     
