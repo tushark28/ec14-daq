@@ -24,6 +24,17 @@ public partial class MainWindow : Window
         {
             // Placeholder for refreshing charts
         };
+        
+        // Initialize digital ports for EC14 (per TestPoint report)
+        try
+        {
+            _daqService.InitializeDigitalPortsForEc14();
+            StatusText.Text = "Ready - Digital ports initialized";
+        }
+        catch (Exception ex)
+        {
+            StatusText.Text = $"Init error: {ex.Message}";
+        }
     }
 
     private async void Run_Click(object sender, RoutedEventArgs e)

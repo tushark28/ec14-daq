@@ -22,7 +22,7 @@ public sealed class DaqService
     public int AdRange { get; set; } = 0; // board default range index
 
     // Buffer state
-    private int _numSamples = 1984; // 4*31*16 per report
+    private int _numSamples = 2048; // Must be multiple of 64 (USB-1408FS-Plus packet size)
     private IntPtr _dataHandle = IntPtr.Zero;
     private int _markIndex;
 
@@ -54,10 +54,19 @@ public sealed class DaqService
                 int rate = SampleRatePerChannel;
                 int options = OptionBackground | OptionContinuous; // 3
 
+                // Ensure count is multiple of 64 for USB-1408FS-Plus
+                if (count % 64 != 0)
+                {
+                    count = (count / 64) * 64;
+                    if (count == 0) count = 64;
+                }
+
                 int err = Cbw.cbAInScan(BoardNum, LowChannel, HighChannel, ref count, ref rate, AdRange, _dataHandle, options);
                 if (err != 0)
                 {
-                    ThrowUlError(err, nameof(Cbw.cbAInScan));
+                    // Provide more specific error information
+                    var errorMsg = GetUlErrorMessage(err);
+                    throw new InvalidOperationException($"cbAInScan failed: {errorMsg} (err={err}). Board={BoardNum}, Channels={LowChannel}-{HighChannel}, Count={count}, Rate={rate}, Range={AdRange}");
                 }
 
                 _markIndex = 0;
@@ -195,10 +204,15 @@ public sealed class DaqService
 
     private static void ThrowUlError(int errCode, string api)
     {
+        var errorMsg = GetUlErrorMessage(errCode);
+        throw new InvalidOperationException($"{api}: {errorMsg} (err={errCode})");
+    }
+
+    private static string GetUlErrorMessage(int errCode)
+    {
         var buffer = new System.Text.StringBuilder(256);
         Cbw.cbGetErrMsg(errCode, buffer, buffer.Capacity);
-        string msg = buffer.ToString();
-        throw new InvalidOperationException($"{api}: {msg} (err={errCode})");
+        return buffer.ToString();
     }
 
     private double CodeToVolts(ushort code)
