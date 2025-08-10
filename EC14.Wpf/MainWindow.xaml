@@ -9,16 +9,16 @@
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
 
-    <StackPanel Orientation="Horizontal" Spacing="8">
-      <Button Content="RUN" Width="80" Height="36" Click="Run_Click"/>
-      <Button Content="STOP" Width="80" Height="36" Click="Stop_Click"/>
-      <Button Content="Balance" Width="100" Height="36" Click="Balance_Click"/>
-      <Button Content="Offsets" Width="100" Height="36" Click="Offsets_Click"/>
-      <ComboBox x:Name="DisplayMode" Width="140">
+    <StackPanel Orientation="Horizontal">
+      <Button Content="RUN" Width="80" Height="36" Click="Run_Click" Margin="0,0,8,0"/>
+      <Button Content="STOP" Width="80" Height="36" Click="Stop_Click" Margin="0,0,8,0"/>
+      <Button Content="Balance" Width="100" Height="36" Click="Balance_Click" Margin="0,0,8,0"/>
+      <Button Content="Offsets" Width="100" Height="36" Click="Offsets_Click" Margin="0,0,8,0"/>
+      <ComboBox x:Name="DisplayMode" Width="140" Margin="0,0,8,0">
         <ComboBoxItem Content="2XY-1SC"/>
         <ComboBoxItem Content="1XY"/>
       </ComboBox>
-      <ComboBox x:Name="RecordMode" Width="160">
+      <ComboBox x:Name="RecordMode" Width="160" Margin="0,0,8,0">
         <ComboBoxItem Content="Off"/>
         <ComboBoxItem Content="Auto"/>
         <ComboBoxItem Content="Foot Switch"/>
@@ -41,12 +41,12 @@
       </Grid>
     </Border>
 
-    <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
-      <Button Content="Save Data" Width="120" Height="32" Click="SaveData_Click"/>
-      <Button Content="Save Image" Width="120" Height="32" Click="SaveImage_Click"/>
-      <Button Content="1XY Setup" Width="120" Height="32" Click="Open1XYSetup_Click"/>
-      <Button Content="2XY-1SC Setup" Width="140" Height="32" Click="Open2XY1SCSetup_Click"/>
-      <Button Content="Save Settings" Width="140" Height="32" Click="SaveSettings_Click"/>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+      <Button Content="Save Data" Width="120" Height="32" Click="SaveData_Click" Margin="0,0,8,0"/>
+      <Button Content="Save Image" Width="120" Height="32" Click="SaveImage_Click" Margin="0,0,8,0"/>
+      <Button Content="1XY Setup" Width="120" Height="32" Click="Open1XYSetup_Click" Margin="0,0,8,0"/>
+      <Button Content="2XY-1SC Setup" Width="140" Height="32" Click="Open2XY1SCSetup_Click" Margin="0,0,8,0"/>
+      <Button Content="Save Settings" Width="140" Height="32" Click="SaveSettings_Click" Margin="0,0,8,0"/>
       <Button Content="Exit" Width="100" Height="32" Click="Exit_Click"/>
     </StackPanel>
   </Grid>
