@@ -22,7 +22,7 @@ public sealed class DaqService
     public int AdRange { get; set; } = 0; // board default range index
 
     // Buffer state
-    private int _numSamples = 2048; // Must be multiple of 64 (USB-1408FS-Plus packet size)
+    private int _numSamples = 256; // Small buffer size that should work with any packet size
     private IntPtr _dataHandle = IntPtr.Zero;
     private int _markIndex;
 
@@ -50,17 +50,14 @@ public sealed class DaqService
                     throw new InvalidOperationException("Windows Buffer BAD");
                 }
 
-                int count = _numSamples;
-                int rate = SampleRatePerChannel;
+                // Use very conservative settings that should work
+                int count = 128; // Very small buffer
+                int rate = 1000; // Lower sample rate
                 int options = OptionBackground | OptionContinuous; // 3
 
-                // Ensure count is multiple of 64 for USB-1408FS-Plus
-                if (count % 64 != 0)
-                {
-                    count = (count / 64) * 64;
-                    if (count == 0) count = 64;
-                }
-
+                // Debug output
+                System.Diagnostics.Debug.WriteLine($"Starting scan: Board={BoardNum}, Channels={LowChannel}-{HighChannel}, Count={count}, Rate={rate}, Range={AdRange}, Options={options}");
+                
                 int err = Cbw.cbAInScan(BoardNum, LowChannel, HighChannel, ref count, ref rate, AdRange, _dataHandle, options);
                 if (err != 0)
                 {
