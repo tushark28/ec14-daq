@@ -104,6 +104,11 @@ class MainWindow(QMainWindow):
         self.test_button.setEnabled(False)
         init_layout.addWidget(self.test_button, 0, 1)
         
+        self.bypass_button = QPushButton("Bypass Test")
+        self.bypass_button.clicked.connect(self.bypass_test)
+        self.bypass_button.setEnabled(False)
+        init_layout.addWidget(self.bypass_button, 1, 0)
+        
         layout.addWidget(init_group)
         
         # Acquisition controls
@@ -217,6 +222,7 @@ class MainWindow(QMainWindow):
             if self.device_manager.initialize_device():
                 self.init_button.setEnabled(False)
                 self.test_button.setEnabled(True)
+                self.bypass_button.setEnabled(True)
                 self.start_button.setEnabled(True)
                 self.status_bar.showMessage("Device initialized successfully")
                 print("✓ Device initialized successfully")
@@ -245,6 +251,18 @@ class MainWindow(QMainWindow):
             error_msg = f"Exception during connection test: {e}"
             print(f"✗ {error_msg}")
             self.status_bar.showMessage("Device communication test failed")
+    
+    def bypass_test(self):
+        """Test USB-1408FS-Plus directly, bypassing instrument board"""
+        print("Running bypass test...")
+        try:
+            self.device_manager.bypass_instrument_board()
+            self.status_bar.showMessage("Bypass test completed")
+            print("✓ Bypass test completed")
+        except Exception as e:
+            error_msg = f"Exception during bypass test: {e}"
+            print(f"✗ {error_msg}")
+            self.status_bar.showMessage("Bypass test failed")
     
     def start_scanning(self):
         """Start data acquisition"""

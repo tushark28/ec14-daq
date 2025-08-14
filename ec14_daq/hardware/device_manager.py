@@ -68,32 +68,79 @@ class DeviceManager:
             ul.d_out(self.board_num, DeviceConfig.PORT_A, 0x00)
             ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x00)
             
-            # Step 2: Test and configure bridge relays
-            print("  Step 2: Testing bridge configurations...")
-            best_config = self.test_bridge_configurations()
-            if best_config is not None:
-                print(f"    Using best bridge config: 0x{best_config:02X}")
-                ul.d_out(self.board_num, DeviceConfig.PORT_B, best_config)
-            else:
-                print("    Using default bridge config: 0x07")
-                ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x07)
+            # Step 2: Try simple direct approach - set all outputs high
+            print("  Step 2: Setting all digital outputs high...")
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, 0xFF)
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, 0xFF)
             
-            # Step 3: Program AD9833 DDS chips with active signals
-            print("  Step 3: Programming AD9833 DDS chips...")
-            self.program_ad9833_chips()
+            # Step 3: Test basic signal acquisition
+            print("  Step 3: Testing basic signal acquisition...")
+            self.test_basic_signals()
             
-            # Step 4: Configure instrumentation amplifiers with higher gains
-            print("  Step 4: Configuring amplifiers...")
-            self.configure_instrumentation_amps()
+            # Step 4: Test A/D channels directly
+            print("  Step 4: Testing A/D channels...")
+            self.test_ad_channels()
             
-            # Step 5: Enable excitation signals
-            print("  Step 5: Enabling excitation signals...")
-            self.enable_excitation()
+            # Step 5: Try different digital output patterns
+            print("  Step 5: Testing digital output patterns...")
+            self.test_digital_patterns()
             
             print("Instrument board initialization completed")
             
         except Exception as e:
             print(f"Error initializing instrument board: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def bypass_instrument_board(self):
+        """Bypass instrument board and test USB-1408FS-Plus directly"""
+        try:
+            print("Bypassing instrument board - testing USB-1408FS-Plus directly...")
+            
+            # Reset all digital outputs
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, 0x00)
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x00)
+            
+            # Test A/D channels with different ranges
+            print("  Testing A/D channels directly...")
+            for range_val, range_name in [
+                (ULRange.BIP5VOLTS, "±5V"),
+                (ULRange.BIP2PT5VOLTS, "±2.5V"),
+                (ULRange.BIP1VOLTS, "±1V")
+            ]:
+                print(f"    Testing {range_name} range...")
+                self.ad_range = range_val
+                
+                # Take multiple readings
+                for i in range(3):
+                    values = self.get_analog_values(5)
+                    if values is not None:
+                        print(f"      Reading {i+1}: {values}")
+                
+                import time
+                time.sleep(0.1)
+            
+            # Test D/A outputs if available
+            print("  Testing D/A outputs...")
+            try:
+                ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, 2.0)
+                ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, -2.0)
+                print("    Set D/A outputs to ±2V")
+                
+                time.sleep(0.2)
+                
+                # Read A/D channels
+                values = self.get_analog_values(10)
+                if values is not None:
+                    print(f"    A/D readings after D/A: {values}")
+                    
+            except Exception as da_error:
+                print(f"    D/A test failed: {da_error}")
+            
+            print("  Direct USB-1408FS-Plus test completed")
+            
+        except Exception as e:
+            print(f"Error in bypass test: {e}")
             import traceback
             traceback.print_exc()
     
@@ -265,6 +312,123 @@ class DeviceManager:
         except Exception as e:
             print(f"  Error testing bridge configurations: {e}")
             return None
+    
+    def test_basic_signals(self):
+        """Test basic signal acquisition without complex initialization"""
+        try:
+            print("    Testing basic signal acquisition...")
+            
+            # Test different A/D ranges
+            ranges_to_test = [
+                (ULRange.BIP5VOLTS, "±5V"),
+                (ULRange.BIP2PT5VOLTS, "±2.5V"),
+                (ULRange.BIP1VOLTS, "±1V"),
+                (ULRange.BIP10VOLTS, "±10V")
+            ]
+            
+            for range_val, range_name in ranges_to_test:
+                print(f"      Testing range: {range_name}")
+                self.ad_range = range_val
+                
+                # Take multiple readings
+                for i in range(5):
+                    values = self.get_analog_values(10)
+                    if values is not None:
+                        print(f"        Reading {i+1}: {values}")
+                        if not np.all(values == -5.0) and not np.all(values == 5.0):
+                            print(f"        ✓ Found varying signals with {range_name}")
+                            return True
+                
+                import time
+                time.sleep(0.1)
+            
+            print("      No varying signals found with any range")
+            return False
+            
+        except Exception as e:
+            print(f"      Error in basic signal test: {e}")
+            return False
+    
+    def test_digital_patterns(self):
+        """Test different digital output patterns to activate instrument board"""
+        try:
+            print("    Testing digital output patterns...")
+            
+            # Common patterns that might activate the instrument board
+            patterns = [
+                (0xAA, 0x55, "Alternating pattern"),
+                (0x55, 0xAA, "Reverse alternating"),
+                (0xF0, 0x0F, "High/low nibble"),
+                (0x0F, 0xF0, "Low/high nibble"),
+                (0x80, 0x80, "MSB only"),
+                (0x01, 0x01, "LSB only"),
+                (0xFF, 0x00, "Port A all high, Port B all low"),
+                (0x00, 0xFF, "Port A all low, Port B all high")
+            ]
+            
+            for port_a, port_b, description in patterns:
+                print(f"      Testing pattern: {description}")
+                ul.d_out(self.board_num, DeviceConfig.PORT_A, port_a)
+                ul.d_out(self.board_num, DeviceConfig.PORT_B, port_b)
+                
+                import time
+                time.sleep(0.2)  # Wait for settling
+                
+                # Test signals
+                values = self.get_analog_values(5)
+                if values is not None:
+                    print(f"        Values: {values}")
+                    if not np.all(values == -5.0) and not np.all(values == 5.0):
+                        print(f"        ✓ Found signals with {description}")
+                        return True
+            
+            print("      No signals found with any digital pattern")
+            return False
+            
+        except Exception as e:
+            print(f"      Error testing digital patterns: {e}")
+            return False
+    
+    def test_ad_channels(self):
+        """Test if A/D channels are working by creating test signals"""
+        try:
+            print("    Testing A/D channels with D/A outputs...")
+            
+            # Test if we can create signals using D/A outputs
+            # This will help verify if the A/D channels are working
+            
+            # Try to output a simple signal on D/A channels
+            try:
+                # Test D/A output (if available)
+                ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, 1.0)  # 1V on channel 0
+                ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, -1.0)  # -1V on channel 1
+                print("      Set D/A outputs to ±1V")
+                
+                import time
+                time.sleep(0.1)
+                
+                # Read A/D channels
+                values = self.get_analog_values(10)
+                if values is not None:
+                    print(f"      A/D readings: {values}")
+                    return True
+                    
+            except Exception as da_error:
+                print(f"      D/A test failed: {da_error}")
+            
+            # Test with different A/D ranges
+            print("      Testing A/D ranges...")
+            for range_val in [ULRange.BIP5VOLTS, ULRange.BIP2PT5VOLTS, ULRange.BIP1VOLTS]:
+                self.ad_range = range_val
+                values = self.get_analog_values(5)
+                if values is not None:
+                    print(f"        Range {range_val}: {values}")
+            
+            return False
+            
+        except Exception as e:
+            print(f"      Error testing A/D channels: {e}")
+            return False
     
     def get_analog_values(self, num_samples=1000):
         """Get single reading from all 4 channels"""
