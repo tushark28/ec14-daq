@@ -109,6 +109,11 @@ class MainWindow(QMainWindow):
         self.bypass_button.setEnabled(False)
         init_layout.addWidget(self.bypass_button, 1, 0)
         
+        self.eddy_config_button = QPushButton("Configure Eddy Current")
+        self.eddy_config_button.clicked.connect(self.configure_eddy_current)
+        self.eddy_config_button.setEnabled(False)
+        init_layout.addWidget(self.eddy_config_button, 1, 1)
+        
         layout.addWidget(init_group)
         
         # Acquisition controls
@@ -223,6 +228,7 @@ class MainWindow(QMainWindow):
                 self.init_button.setEnabled(False)
                 self.test_button.setEnabled(True)
                 self.bypass_button.setEnabled(True)
+                self.eddy_config_button.setEnabled(True)
                 self.start_button.setEnabled(True)
                 self.status_bar.showMessage("Device initialized successfully")
                 print("✓ Device initialized successfully")
@@ -263,6 +269,18 @@ class MainWindow(QMainWindow):
             error_msg = f"Exception during bypass test: {e}"
             print(f"✗ {error_msg}")
             self.status_bar.showMessage("Bypass test failed")
+    
+    def configure_eddy_current(self):
+        """Configure system for eddy current testing"""
+        print("Configuring for eddy current testing...")
+        try:
+            self.device_manager.configure_for_eddy_current()
+            self.status_bar.showMessage("Eddy current configuration completed")
+            print("✓ Eddy current configuration completed")
+        except Exception as e:
+            error_msg = f"Exception during eddy current configuration: {e}"
+            print(f"✗ {error_msg}")
+            self.status_bar.showMessage("Eddy current configuration failed")
     
     def start_scanning(self):
         """Start data acquisition"""

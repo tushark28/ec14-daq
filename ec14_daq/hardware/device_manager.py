@@ -123,8 +123,12 @@ class DeviceManager:
             # Test D/A outputs if available
             print("  Testing D/A outputs...")
             try:
-                ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, 2.0)
-                ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, -2.0)
+                # Convert voltage to raw value
+                raw_value_2v = int((2.0 + 5.0) * 32767 / 10.0)  # Convert 2V to raw value
+                raw_value_neg2v = int((-2.0 + 5.0) * 32767 / 10.0)  # Convert -2V to raw value
+                
+                ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, raw_value_2v)
+                ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, raw_value_neg2v)
                 print("    Set D/A outputs to ±2V")
                 
                 time.sleep(0.2)
@@ -141,6 +145,30 @@ class DeviceManager:
             
         except Exception as e:
             print(f"Error in bypass test: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def configure_for_eddy_current(self):
+        """Configure the system specifically for eddy current testing"""
+        try:
+            print("Configuring system for eddy current testing...")
+            
+            # Set optimal A/D range for eddy current signals
+            self.ad_range = ULRange.BIP2PT5VOLTS  # ±2.5V range for better resolution
+            
+            # Configure digital outputs for eddy current mode
+            # Port A: SPI control for DDS chips
+            # Port B: Bridge configuration and gain control
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, 0x80)  # Enable excitation
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x07)  # Differential mode
+            
+            print("  ✓ System configured for eddy current testing")
+            print("  ✓ A/D range set to ±2.5V")
+            print("  ✓ Excitation enabled")
+            print("  ✓ Bridge set to differential mode")
+            
+        except Exception as e:
+            print(f"Error configuring for eddy current: {e}")
             import traceback
             traceback.print_exc()
     
@@ -400,8 +428,12 @@ class DeviceManager:
             # Try to output a simple signal on D/A channels
             try:
                 # Test D/A output (if available)
-                ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, 1.0)  # 1V on channel 0
-                ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, -1.0)  # -1V on channel 1
+                # Convert voltage to raw value
+                raw_value_1v = int((1.0 + 5.0) * 32767 / 10.0)  # Convert 1V to raw value
+                raw_value_neg1v = int((-1.0 + 5.0) * 32767 / 10.0)  # Convert -1V to raw value
+                
+                ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, raw_value_1v)  # 1V on channel 0
+                ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, raw_value_neg1v)  # -1V on channel 1
                 print("      Set D/A outputs to ±1V")
                 
                 import time
@@ -535,30 +567,44 @@ class DeviceManager:
                     
                     print(f"  Volts data shape: {volts_data.shape}, Sample values: {volts_data[0] if volts_data.size > 0 else 'empty'}")
                     
-                    # Check if all values are -5V (no signal condition)
-                    if volts_data.size > 0 and np.all(volts_data == -5.0):
-                        print("  ⚠️  All channels reading -5V: No active signals detected")
-                        print("     Possible causes:")
-                        print("     - Instrument board not properly initialized")
-                        print("     - AD9833 DDS chips not generating signals")
-                        print("     - Bridge circuit not configured correctly")
-                        print("     - Amplifier gains too low")
-                        print("     - No eddy current probe connected")
-                        
-                        # Try to reinitialize if this persists
-                        if hasattr(self, '_reinit_count'):
-                            self._reinit_count += 1
-                        else:
-                            self._reinit_count = 1
+                    # Check for signal issues
+                    if volts_data.size > 0:
+                        # Check if all values are -5V (no signal condition)
+                        if np.all(volts_data == -5.0):
+                            print("  ⚠️  All channels reading -5V: No active signals detected")
+                            print("     Possible causes:")
+                            print("     - Instrument board not properly initialized")
+                            print("     - AD9833 DDS chips not generating signals")
+                            print("     - Bridge circuit not configured correctly")
+                            print("     - Amplifier gains too low")
+                            print("     - No eddy current probe connected")
                             
-                        if self._reinit_count <= 3:
-                            print(f"  🔄 Attempting reinitialization #{self._reinit_count}...")
-                            self.initialize_instrument_board()
+                            # Try to reinitialize if this persists
+                            if hasattr(self, '_reinit_count'):
+                                self._reinit_count += 1
+                            else:
+                                self._reinit_count = 1
+                                
+                            if self._reinit_count <= 3:
+                                print(f"  🔄 Attempting reinitialization #{self._reinit_count}...")
+                                self.initialize_instrument_board()
+                            else:
+                                print("  ❌ Max reinitialization attempts reached")
                         else:
-                            print("  ❌ Max reinitialization attempts reached")
-                    else:
-                        # Reset reinit counter if we get signals
-                        self._reinit_count = 0
+                            # Reset reinit counter if we get signals
+                            self._reinit_count = 0
+                            
+                            # Check for channel 4 issue (stuck at -1V)
+                            if volts_data.shape[1] >= 4 and np.all(volts_data[:, 3] == -1.0):
+                                print("  ⚠️  Channel 4 stuck at -1V: Possible hardware issue")
+                                print("     This may be normal if channel 4 is not connected")
+                            
+                            # Check for signal variations
+                            signal_variance = np.var(volts_data, axis=0)
+                            if np.any(signal_variance > 1e-6):  # If any channel has variance
+                                print(f"  ✓ Active signals detected: variance = {signal_variance}")
+                            else:
+                                print("  ⚠️  All signals appear static (no variations)")
                     
                     return volts_data
                 else:
