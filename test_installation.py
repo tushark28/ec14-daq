@@ -52,6 +52,11 @@ def test_imports():
     try:
         import mcculw
         print("✓ MCCULW imported successfully")
+        
+        # Test specific imports
+        from mcculw.enums import ULRange
+        print("✓ ULRange enum imported successfully")
+        
     except ImportError as e:
         print(f"✗ MCCULW import failed: {e}")
         print("  Note: MCCULW requires Measurement Computing Universal Library")

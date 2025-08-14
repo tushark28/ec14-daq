@@ -3,7 +3,7 @@ Device configuration for USB-1408FS-Plus
 Matching TestPoint EC14 parameters
 """
 
-from mcculw.enums import ULRange, ScanOptions
+from mcculw.enums import ULRange
 
 class DeviceConfig:
     """Configuration matching TestPoint EC14 settings"""
@@ -29,8 +29,8 @@ class DeviceConfig:
     }
     DEFAULT_AD_RANGE = ULRange.BIP5VOLTS
     
-    # Scan options
-    SCAN_OPTIONS = ScanOptions.BACKGROUND | ScanOptions.CONTINUOUS
+    # Scan options (using numeric values for compatibility)
+    SCAN_OPTIONS = 3  # BACKGROUND | CONTINUOUS
     
     # Digital I/O configuration
     PORT_A = 10

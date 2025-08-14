@@ -5,7 +5,7 @@ Handles device initialization and communication
 
 import numpy as np
 from mcculw import ul
-from mcculw.enums import ULRange, ScanOptions, ScanStatus, DigitalPortType
+from mcculw.enums import ULRange, ScanOptions
 from mcculw.ul import ULError
 
 from ..config.device_config import DeviceConfig
@@ -29,11 +29,11 @@ class DeviceManager:
             print(f"Connected to: {board_name}")
             
             # Configure Port A as output
-            ul.d_config_port(self.board_num, DeviceConfig.PORT_A, DigitalPortType.AUXPORT)
+            ul.d_config_port(self.board_num, DeviceConfig.PORT_A, 1)  # 1 = OUTPUT
             ul.d_out(self.board_num, DeviceConfig.PORT_A, DeviceConfig.PORT_A_DEFAULT)
             
             # Configure Port B as output  
-            ul.d_config_port(self.board_num, DeviceConfig.PORT_B, DigitalPortType.AUXPORT)
+            ul.d_config_port(self.board_num, DeviceConfig.PORT_B, 1)  # 1 = OUTPUT
             ul.d_out(self.board_num, DeviceConfig.PORT_B, DeviceConfig.PORT_B_DEFAULT)
             
             self.initialized = True
@@ -125,7 +125,7 @@ class DeviceManager:
             # Get scan status
             status, count, index, func_type = ul.get_status(self.board_num)
             
-            if status == ScanStatus.RUNNING and count > 0:
+            if status == 1 and count > 0:  # 1 = RUNNING status
                 # Get data from buffer
                 raw_data = ul.win_buf_to_array(self.buffer_handle, 0, count)
                 
