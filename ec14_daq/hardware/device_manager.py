@@ -123,7 +123,8 @@ class DeviceManager:
             
         try:
             # Get scan status (function_type = 1 for A/D scan)
-            status, count, index, func_type = ul.get_status(self.board_num, 1)
+            # Returns: (status, count, index) - only 3 values
+            status, count, index = ul.get_status(self.board_num, 1)
             
             if status == 1 and count > 0:  # 1 = RUNNING status
                 # Get data from buffer

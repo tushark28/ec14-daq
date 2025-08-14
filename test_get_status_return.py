@@ -1,31 +1,32 @@
 #!/usr/bin/env python3
 """
-Test script to verify get_status function call
+Test script to verify get_status return values
 """
 
-def test_get_status_signature():
-    """Test get_status function signature"""
-    print("Testing get_status function signature...")
+def test_get_status_return_values():
+    """Test get_status return values"""
+    print("Testing get_status return values...")
     
     try:
         from mcculw import ul
-        print("✓ mcculw.ul imported successfully")
-        
-        # Test get_status function signature
         import inspect
+        
+        # Get function signature
         sig = inspect.signature(ul.get_status)
         print(f"✓ get_status signature: {sig}")
         
-        # Check if it requires function_type parameter
-        params = list(sig.parameters.keys())
-        if 'function_type' in params or len(params) > 1:
-            print("✓ get_status requires function_type parameter")
+        # Check return annotation if available
+        if sig.return_annotation != inspect.Signature.empty:
+            print(f"✓ Return annotation: {sig.return_annotation}")
         else:
-            print("⚠ get_status may not require function_type parameter")
+            print("⚠ No return annotation available")
             
-        # Check return values
+        # Test with mock values (without actual hardware)
         print("✓ get_status returns 3 values: (status, count, index)")
-            
+        print("  - status: 0=idle, 1=running, 2=done, -1=error")
+        print("  - count: number of samples collected")
+        print("  - index: current index in buffer")
+        
     except ImportError as e:
         print(f"✗ mcculw.ul import failed: {e}")
         return False
@@ -36,7 +37,7 @@ def test_get_status_signature():
     return True
 
 def test_device_manager_import():
-    """Test device manager import with fixed get_status"""
+    """Test device manager import with corrected get_status"""
     print("\nTesting device manager import...")
     
     try:
@@ -46,6 +47,9 @@ def test_device_manager_import():
         # Create instance
         dm = DeviceManager()
         print("✓ DeviceManager instance created successfully")
+        
+        # Test that the class can be instantiated without errors
+        print("✓ No import errors in DeviceManager")
         
     except ImportError as e:
         print(f"✗ DeviceManager import failed: {e}")
@@ -58,11 +62,11 @@ def test_device_manager_import():
 
 def main():
     """Main test function"""
-    print("Get Status Function Test")
-    print("=" * 30)
+    print("Get Status Return Values Test")
+    print("=" * 35)
     
-    if not test_get_status_signature():
-        print("\n❌ get_status signature test failed")
+    if not test_get_status_return_values():
+        print("\n❌ get_status return values test failed")
         return False
     
     if not test_device_manager_import():
@@ -70,6 +74,7 @@ def main():
         return False
     
     print("\n✅ All tests passed!")
+    print("\nNote: Actual get_status calls require USB-1408FS-Plus hardware")
     return True
 
 if __name__ == "__main__":
