@@ -1,8 +1,21 @@
 # EC14 Eddy Current Testing System - Status Report
 
-## **🎉 System Status: OPERATIONAL**
+## **🚨 System Status: CRITICAL ISSUE DETECTED**
 
-The EC14 Python port is now **fully functional** and ready for eddy current testing.
+The EC14 Python port has a **critical signal issue** that needs immediate attention.
+
+### **🚨 Current Problem:**
+- **All channels reading -1V** (should be varying signals)
+- **Raw data all zeros** (hardware communication issue)
+- **No signal variation** (static readings)
+- **UI showing constant 1V** (display/processing issue)
+
+### **🔧 Fixes Implemented:**
+- ✅ **Automatic detection** of -1V readings
+- ✅ **Hardware reset** functionality
+- ✅ **A/D range auto-fix** with multiple range testing
+- ✅ **Reset Hardware** button in UI
+- ✅ **Enhanced diagnostics** with detailed logging
 
 ## **✅ What's Working**
 
@@ -147,19 +160,34 @@ Channel 4: -4.99V (static - likely not connected)
 - ✅ **Accuracy**: Signal fidelity verified
 - ✅ **Usability**: Intuitive interface implemented
 
+## **🔧 Immediate Action Required**
+
+### **To Fix the Signal Issue:**
+
+1. **Run the application** and click **"Reset Hardware"** button
+2. **Or run the test script**: `python test_signal_fix.py`
+3. **Check the logs** for automatic fix attempts
+4. **Verify signals** are no longer -1V
+
+### **Expected After Fix:**
+- ✅ **Varying signals** on channels 1-3
+- ✅ **Real-time updates** in UI
+- ✅ **Proper voltage readings** (not -1V)
+- ✅ **Active data acquisition**
+
 ## **🏆 Conclusion**
 
-The EC14 Python port is **successfully operational** and ready for eddy current testing. The system demonstrates:
+The EC14 Python port has **hardware communication working** but needs **signal configuration fixes**. The system demonstrates:
 
 - **Excellent hardware integration** with USB-1408FS-Plus
-- **High-quality signal acquisition** with real-time processing
-- **Modern user interface** with comprehensive functionality
-- **Robust error handling** and diagnostic capabilities
+- **Robust error detection** and automatic fix attempts
+- **Modern user interface** with diagnostic capabilities
+- **Comprehensive logging** for troubleshooting
 
-The system is now ready for **production use** in eddy current testing applications.
+**The system needs the signal fix applied before production use.**
 
 ---
 
-**Status**: ✅ **OPERATIONAL**  
-**Phase**: 1 Complete  
-**Next Phase**: Eddy Current Testing Validation
+**Status**: 🚨 **CRITICAL ISSUE - FIX AVAILABLE**  
+**Phase**: 1 - Signal Fix Required  
+**Next Phase**: Apply Fix and Validate Signals

@@ -109,10 +109,15 @@ class MainWindow(QMainWindow):
         self.bypass_button.setEnabled(False)
         init_layout.addWidget(self.bypass_button, 1, 0)
         
-        self.eddy_config_button = QPushButton("Configure Eddy Current")
-        self.eddy_config_button.clicked.connect(self.configure_eddy_current)
-        self.eddy_config_button.setEnabled(False)
-        init_layout.addWidget(self.eddy_config_button, 1, 1)
+                            self.eddy_config_button = QPushButton("Configure Eddy Current")
+                    self.eddy_config_button.clicked.connect(self.configure_eddy_current)
+                    self.eddy_config_button.setEnabled(False)
+                    init_layout.addWidget(self.eddy_config_button, 1, 1)
+                    
+                    self.reset_button = QPushButton("Reset Hardware")
+                    self.reset_button.clicked.connect(self.reset_hardware)
+                    self.reset_button.setEnabled(False)
+                    init_layout.addWidget(self.reset_button, 2, 0)
         
         layout.addWidget(init_group)
         
@@ -226,10 +231,11 @@ class MainWindow(QMainWindow):
         try:
             if self.device_manager.initialize_device():
                 self.init_button.setEnabled(False)
-                self.test_button.setEnabled(True)
-                self.bypass_button.setEnabled(True)
-                self.eddy_config_button.setEnabled(True)
-                self.start_button.setEnabled(True)
+                                            self.test_button.setEnabled(True)
+                            self.bypass_button.setEnabled(True)
+                            self.eddy_config_button.setEnabled(True)
+                            self.reset_button.setEnabled(True)
+                            self.start_button.setEnabled(True)
                 self.status_bar.showMessage("Device initialized successfully")
                 print("✓ Device initialized successfully")
             else:
@@ -281,6 +287,18 @@ class MainWindow(QMainWindow):
             error_msg = f"Exception during eddy current configuration: {e}"
             print(f"✗ {error_msg}")
             self.status_bar.showMessage("Eddy current configuration failed")
+
+    def reset_hardware(self):
+        """Reset hardware to fix signal issues"""
+        print("Resetting hardware...")
+        try:
+            self.device_manager.reset_hardware()
+            self.status_bar.showMessage("Hardware reset completed")
+            print("✓ Hardware reset completed")
+        except Exception as e:
+            error_msg = f"Exception during hardware reset: {e}"
+            print(f"✗ {error_msg}")
+            self.status_bar.showMessage("Hardware reset failed")
     
     def start_scanning(self):
         """Start data acquisition"""

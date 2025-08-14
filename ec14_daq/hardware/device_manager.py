@@ -578,8 +578,28 @@ class DeviceManager:
                     
                     # Check for signal issues
                     if volts_data.size > 0:
+                        # Check for all -1V readings (indicates A/D range or conversion issue)
+                        if np.all(volts_data == -1.0):
+                            print("  🚨 CRITICAL: All channels reading -1V!")
+                            print("     This indicates an A/D range or conversion problem")
+                            print("     Possible causes:")
+                            print("     - Wrong A/D range selected")
+                            print("     - Data conversion error")
+                            print("     - Hardware not properly initialized")
+                            print("     - Raw data all zeros")
+                            
+                            # Check raw data
+                            if np.all(data == 0):
+                                print("  🚨 Raw data is all zeros - hardware issue!")
+                                print("     Attempting hardware reset...")
+                                self.reset_hardware()
+                            else:
+                                print(f"  Raw data sample: {data[0] if data.size > 0 else 'empty'}")
+                                print("  Attempting A/D range fix...")
+                                self.fix_ad_range()
+                                
                         # Check if all values are -5V (no signal condition)
-                        if np.all(volts_data == -5.0):
+                        elif np.all(volts_data == -5.0):
                             print("  ⚠️  All channels reading -5V: No active signals detected")
                             print("     Possible causes:")
                             print("     - Instrument board not properly initialized")
@@ -653,8 +673,85 @@ class DeviceManager:
         except ULError as e:
             print(f"Counter read error: {e}")
             return 0
+
+    def get_single_reading(self, channel):
+        """Get a single reading from a specific channel"""
+        try:
+            value = ul.a_in(self.board_num, channel, self.ad_range)
+            return value
+        except ULError as e:
+            print(f"Single reading error: {e}")
+            return -1.0
     
     def cleanup(self):
         """Clean up device resources"""
         self.stop_scanning()
         print("Device cleanup completed")
+
+    def reset_hardware(self):
+        """Reset hardware to fix all-zeros or all-negative readings"""
+        try:
+            print("  🔄 Resetting hardware...")
+            
+            # Stop any ongoing scans
+            if self.scanning:
+                ul.stop_background(self.board_num, 1)
+                self.scanning = False
+            
+            # Reset digital outputs
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, 0x00)
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x00)
+            
+            # Wait a moment
+            time.sleep(0.1)
+            
+            # Reconfigure digital outputs
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, DeviceConfig.PORT_A_DEFAULT)
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, DeviceConfig.PORT_B_DEFAULT)
+            
+            # Reset A/D range to default
+            self.ad_range = DeviceConfig.DEFAULT_AD_RANGE
+            
+            print("  ✓ Hardware reset completed")
+            
+        except Exception as e:
+            print(f"  Error during hardware reset: {e}")
+            traceback.print_exc()
+
+    def fix_ad_range(self):
+        """Fix A/D range issues that cause all -1V readings"""
+        try:
+            print("  🔧 Fixing A/D range...")
+            
+            # Try different A/D ranges
+            ranges_to_try = [
+                ULRange.BIP5VOLTS,
+                ULRange.BIP2PT5VOLTS,
+                ULRange.BIP1VOLTS,
+                ULRange.BIP10VOLTS
+            ]
+            
+            for range_val in ranges_to_try:
+                print(f"    Trying range: {range_val}")
+                self.ad_range = range_val
+                
+                # Test with a single reading
+                try:
+                    test_value = ul.a_in(self.board_num, 0, range_val)
+                    print(f"    Test reading: {test_value}V")
+                    
+                    if test_value != -1.0 and test_value != -5.0:
+                        print(f"    ✓ Found working range: {range_val}")
+                        return True
+                        
+                except Exception as e:
+                    print(f"    Range {range_val} failed: {e}")
+                    continue
+            
+            print("  ❌ No working A/D range found")
+            return False
+            
+        except Exception as e:
+            print(f"  Error fixing A/D range: {e}")
+            traceback.print_exc()
+            return False
