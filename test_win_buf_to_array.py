@@ -19,17 +19,17 @@ def test_win_buf_to_array_signature():
         params = list(sig.parameters.keys())
         print(f"✓ Parameters: {params}")
         
-        # Expected parameters: (buffer_handle, first_element, count)
-        expected_params = ['buffer_handle', 'first_element', 'count']
+        # Expected parameters: (memhandle, data_array, first_point, count)
+        expected_params = ['memhandle', 'data_array', 'first_point', 'count']
         
-        if len(params) >= 3:
-            print("✓ win_buf_to_array has at least 3 parameters")
+        if len(params) >= 4:
+            print("✓ win_buf_to_array has at least 4 parameters")
             
-            # Check if first 3 match expected
-            if params[:3] == expected_params:
-                print("✓ Parameters match expected: (buffer_handle, first_element, count)")
+            # Check if all 4 match expected
+            if params == expected_params:
+                print("✓ Parameters match expected: (memhandle, data_array, first_point, count)")
             else:
-                print(f"⚠ Parameters don't match expected: {params[:3]} vs {expected_params}")
+                print(f"⚠ Parameters don't match expected: {params} vs {expected_params}")
         else:
             print(f"✗ win_buf_to_array has insufficient parameters: {len(params)}")
             return False

@@ -128,8 +128,12 @@ class DeviceManager:
             
             if status == 1 and count > 0:  # 1 = RUNNING status
                 # Get data from buffer
-                # win_buf_to_array(buffer_handle, first_element, count)
-                raw_data = ul.win_buf_to_array(self.buffer_handle, 0, count)
+                # win_buf_to_array(memhandle, data_array, first_point, count)
+                # data_array is an output parameter - we need to create an array first
+                import array
+                data_array = array.array('h', [0] * count)  # 'h' for signed short
+                ul.win_buf_to_array(self.buffer_handle, data_array, 0, count)
+                raw_data = list(data_array)
                 
                 # Convert to numpy array and reshape to 4 channels
                 data = np.array(raw_data).reshape(-1, 4)
