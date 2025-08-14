@@ -124,12 +124,16 @@ class DeviceManager:
             print("  Testing D/A outputs...")
             try:
                 # Convert voltage to raw value
-                raw_value_2v = int((2.0 + 5.0) * 32767 / 10.0)  # Convert 2V to raw value
-                raw_value_neg2v = int((-2.0 + 5.0) * 32767 / 10.0)  # Convert -2V to raw value
+                raw_value_2v = int((2.0 + 5.0) * 65535 / 10.0)  # Convert 2V to raw value
+                raw_value_neg2v = int((-2.0 + 5.0) * 65535 / 10.0)  # Convert -2V to raw value
+                
+                # Ensure values are within valid range
+                raw_value_2v = max(0, min(65535, raw_value_2v))
+                raw_value_neg2v = max(0, min(65535, raw_value_neg2v))
                 
                 ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, raw_value_2v)
                 ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, raw_value_neg2v)
-                print("    Set D/A outputs to ±2V")
+                print(f"    Set D/A outputs to ±2V (raw values: {raw_value_2v}, {raw_value_neg2v})")
                 
                 time.sleep(0.2)
                 
@@ -428,13 +432,18 @@ class DeviceManager:
             # Try to output a simple signal on D/A channels
             try:
                 # Test D/A output (if available)
-                # Convert voltage to raw value
-                raw_value_1v = int((1.0 + 5.0) * 32767 / 10.0)  # Convert 1V to raw value
-                raw_value_neg1v = int((-1.0 + 5.0) * 32767 / 10.0)  # Convert -1V to raw value
+                # Use proper raw values for USB-1408FS-Plus D/A
+                # Range is 0-65535 for ±5V
+                raw_value_1v = int((1.0 + 5.0) * 65535 / 10.0)  # Convert 1V to raw value
+                raw_value_neg1v = int((-1.0 + 5.0) * 65535 / 10.0)  # Convert -1V to raw value
+                
+                # Ensure values are within valid range
+                raw_value_1v = max(0, min(65535, raw_value_1v))
+                raw_value_neg1v = max(0, min(65535, raw_value_neg1v))
                 
                 ul.a_out(self.board_num, 0, ULRange.BIP5VOLTS, raw_value_1v)  # 1V on channel 0
                 ul.a_out(self.board_num, 1, ULRange.BIP5VOLTS, raw_value_neg1v)  # -1V on channel 1
-                print("      Set D/A outputs to ±1V")
+                print(f"      Set D/A outputs to ±1V (raw values: {raw_value_1v}, {raw_value_neg1v})")
                 
                 import time
                 time.sleep(0.1)
