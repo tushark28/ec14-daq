@@ -63,43 +63,54 @@ class DeviceManager:
         try:
             print("Initializing instrument board...")
             
-            # Configure SPI for AD9833 DDS chips
-            # Port A bits: SPI control (CS, SCLK, SDATA)
-            # Port B bits: Relay control and gain settings
+            # Step 1: Reset all digital outputs
+            print("  Step 1: Resetting digital outputs...")
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, 0x00)
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x00)
             
-            # Set initial SPI state
-            spi_control = 0x00  # All SPI lines low initially
-            ul.d_out(self.board_num, DeviceConfig.PORT_A, spi_control)
+            # Step 2: Test and configure bridge relays
+            print("  Step 2: Testing bridge configurations...")
+            best_config = self.test_bridge_configurations()
+            if best_config is not None:
+                print(f"    Using best bridge config: 0x{best_config:02X}")
+                ul.d_out(self.board_num, DeviceConfig.PORT_B, best_config)
+            else:
+                print("    Using default bridge config: 0x07")
+                ul.d_out(self.board_num, DeviceConfig.PORT_B, 0x07)
             
-            # Configure relays for default mode (differential/absolute)
-            relay_control = 0x07  # Default relay state
-            ul.d_out(self.board_num, DeviceConfig.PORT_B, relay_control)
-            
-            # Program AD9833 DDS chips with default frequencies
+            # Step 3: Program AD9833 DDS chips with active signals
+            print("  Step 3: Programming AD9833 DDS chips...")
             self.program_ad9833_chips()
             
-            # Configure instrumentation amplifiers
+            # Step 4: Configure instrumentation amplifiers with higher gains
+            print("  Step 4: Configuring amplifiers...")
             self.configure_instrumentation_amps()
+            
+            # Step 5: Enable excitation signals
+            print("  Step 5: Enabling excitation signals...")
+            self.enable_excitation()
             
             print("Instrument board initialization completed")
             
         except Exception as e:
             print(f"Error initializing instrument board: {e}")
+            import traceback
+            traceback.print_exc()
     
     def program_ad9833_chips(self):
         """Program the 4 AD9833 DDS chips via SPI"""
         try:
             print("  Programming AD9833 DDS chips...")
             
-            # Default frequencies for eddy current testing
-            frequencies = [1000, 2000, 5000, 10000]  # Hz
+            # More active frequencies for testing
+            frequencies = [5000, 7500, 10000, 15000]  # Hz - higher frequencies for better detection
             
             for chip in range(4):
                 freq = frequencies[chip]
                 print(f"    Programming chip {chip} with {freq} Hz")
                 
                 # AD9833 programming sequence
-                # Control register: 0x2000 (enable output, sine wave)
+                # Control register: 0x2000 (enable output, sine wave, reset)
                 control_word = 0x2000
                 self.spi_write(chip, control_word)
                 
@@ -112,10 +123,18 @@ class DeviceManager:
                 phase_word = 0
                 self.spi_write(chip, 0xC000 | (phase_word & 0xFFF))
                 
+                # Enable output (clear reset bit)
+                control_word = 0x0000  # Enable output
+                self.spi_write(chip, control_word)
+                
+                print(f"    Chip {chip} programmed and enabled")
+                
             print("  AD9833 programming completed")
             
         except Exception as e:
             print(f"  Error programming AD9833: {e}")
+            import traceback
+            traceback.print_exc()
     
     def spi_write(self, chip_select, data):
         """Write data to AD9833 via SPI"""
@@ -154,14 +173,98 @@ class DeviceManager:
         try:
             print("  Configuring instrumentation amplifiers...")
             
-            # Set default gain (adjust based on test requirements)
-            gain_setting = 0x01  # Low gain for initial testing
-            ul.d_out(self.board_num, DeviceConfig.PORT_B, gain_setting)
+            # Try different gain settings to get better signal levels
+            gain_settings = [0x01, 0x03, 0x07, 0x0F, 0x1F, 0x3F]
+            
+            for gain in gain_settings:
+                print(f"    Trying gain setting: 0x{gain:02X}")
+                ul.d_out(self.board_num, DeviceConfig.PORT_B, gain)
+                import time
+                time.sleep(0.1)  # Wait for amplifier to settle
+                
+                # Test if we get any signal variation
+                test_values = self.get_analog_values(10)
+                if test_values is not None:
+                    print(f"      Test values: {test_values}")
+                    if not np.all(test_values == -5.0):
+                        print(f"      ✓ Found non-zero signals with gain 0x{gain:02X}")
+                        break
             
             print("  Instrumentation amplifiers configured")
             
         except Exception as e:
             print(f"  Error configuring amplifiers: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def enable_excitation(self):
+        """Enable excitation signals and bridge circuit"""
+        try:
+            print("  Enabling excitation signals...")
+            
+            # Enable excitation by setting appropriate digital outputs
+            # This activates the bridge circuit and DDS outputs
+            
+            # Set excitation enable bits
+            excitation_control = 0x80  # Enable excitation
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, excitation_control)
+            
+            # Wait for signals to stabilize
+            import time
+            time.sleep(0.5)
+            
+            # Test excitation signals
+            test_values = self.get_analog_values(20)
+            if test_values is not None:
+                print(f"    Excitation test values: {test_values}")
+                if not np.all(test_values == -5.0):
+                    print("    ✓ Excitation signals detected")
+                else:
+                    print("    ⚠️  No excitation signals detected")
+            
+            print("  Excitation signals enabled")
+            
+        except Exception as e:
+            print(f"  Error enabling excitation: {e}")
+            import traceback
+            traceback.print_exc()
+    
+    def test_bridge_configurations(self):
+        """Test different bridge circuit configurations"""
+        try:
+            print("  Testing bridge configurations...")
+            
+            # Different bridge configurations to try
+            bridge_configs = [
+                (0x07, "Differential/Absolute"),
+                (0x0F, "Cross Axial/Differential"), 
+                (0x03, "Absolute Mode"),
+                (0x0B, "Differential Mode"),
+                (0x1F, "High Gain Mode"),
+                (0x00, "Reset Mode")
+            ]
+            
+            for config, description in bridge_configs:
+                print(f"    Testing {description} (0x{config:02X})...")
+                ul.d_out(self.board_num, DeviceConfig.PORT_B, config)
+                
+                import time
+                time.sleep(0.2)  # Wait for relays to settle
+                
+                # Test signal levels
+                test_values = self.get_analog_values(10)
+                if test_values is not None:
+                    print(f"      Values: {test_values}")
+                    if not np.all(test_values == -5.0):
+                        print(f"      ✓ Found signals with {description}")
+                        return config
+            
+            print("    No signals found with any bridge configuration")
+            return None
+            
+        except Exception as e:
+            print(f"  Error testing bridge configurations: {e}")
+            return None
     
     def get_analog_values(self, num_samples=1000):
         """Get single reading from all 4 channels"""
@@ -271,10 +374,27 @@ class DeviceManager:
                     # Check if all values are -5V (no signal condition)
                     if volts_data.size > 0 and np.all(volts_data == -5.0):
                         print("  ⚠️  All channels reading -5V: No active signals detected")
-                        print("     This is normal if:")
-                        print("     - No eddy current probe is connected")
-                        print("     - No test piece is being scanned")
-                        print("     - Instrument board needs calibration")
+                        print("     Possible causes:")
+                        print("     - Instrument board not properly initialized")
+                        print("     - AD9833 DDS chips not generating signals")
+                        print("     - Bridge circuit not configured correctly")
+                        print("     - Amplifier gains too low")
+                        print("     - No eddy current probe connected")
+                        
+                        # Try to reinitialize if this persists
+                        if hasattr(self, '_reinit_count'):
+                            self._reinit_count += 1
+                        else:
+                            self._reinit_count = 1
+                            
+                        if self._reinit_count <= 3:
+                            print(f"  🔄 Attempting reinitialization #{self._reinit_count}...")
+                            self.initialize_instrument_board()
+                        else:
+                            print("  ❌ Max reinitialization attempts reached")
+                    else:
+                        # Reset reinit counter if we get signals
+                        self._reinit_count = 0
                     
                     return volts_data
                 else:
