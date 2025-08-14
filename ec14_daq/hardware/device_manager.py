@@ -133,10 +133,34 @@ class DeviceManager:
             
             if status == 1 and count > 0:  # 1 = RUNNING status
                 # Get data from buffer
-                # win_buf_to_array(memhandle, data_array, first_point, count)
-                # data_array is an output parameter - we need to create a list first
-                raw_data = [0] * count  # Create list of zeros
-                ul.win_buf_to_array(self.buffer_handle, raw_data, 0, count)
+                # Try different approaches for win_buf_to_array
+                try:
+                    # Approach 1: Use numpy array
+                    import numpy as np
+                    raw_data = np.zeros(count, dtype=np.int16)
+                    print(f"  Attempting win_buf_to_array with numpy array, count: {count}")
+                    ul.win_buf_to_array(self.buffer_handle, raw_data, 0, count)
+                    raw_data = raw_data.tolist()
+                except Exception as e1:
+                    print(f"  Numpy approach failed: {e1}")
+                    try:
+                        # Approach 2: Use ctypes array
+                        import ctypes
+                        raw_data = (ctypes.c_ushort * count)()
+                        print(f"  Attempting win_buf_to_array with ctypes array, count: {count}")
+                        ul.win_buf_to_array(self.buffer_handle, raw_data, 0, count)
+                        raw_data = list(raw_data)
+                    except Exception as e2:
+                        print(f"  Ctypes approach failed: {e2}")
+                        try:
+                            # Approach 3: Use simple list
+                            raw_data = [0] * count
+                            print(f"  Attempting win_buf_to_array with simple list, count: {count}")
+                            ul.win_buf_to_array(self.buffer_handle, raw_data, 0, count)
+                        except Exception as e3:
+                            print(f"  Simple list approach failed: {e3}")
+                            print(f"  Buffer handle: {self.buffer_handle}, Count: {count}")
+                            raise e3
                 
                 # Convert to numpy array and reshape to 4 channels
                 data = np.array(raw_data).reshape(-1, 4)

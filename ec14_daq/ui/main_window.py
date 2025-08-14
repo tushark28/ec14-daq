@@ -210,22 +210,40 @@ class MainWindow(QMainWindow):
         
     def initialize_device(self):
         """Initialize the USB-1408FS-Plus device"""
+        print("Initializing device...")
         self.status_bar.showMessage("Initializing device...")
         
-        if self.device_manager.initialize_device():
-            self.init_button.setEnabled(False)
-            self.test_button.setEnabled(True)
-            self.start_button.setEnabled(True)
-            self.status_bar.showMessage("Device initialized successfully")
-        else:
-            QMessageBox.critical(self, "Error", "Failed to initialize device")
+        try:
+            if self.device_manager.initialize_device():
+                self.init_button.setEnabled(False)
+                self.test_button.setEnabled(True)
+                self.start_button.setEnabled(True)
+                self.status_bar.showMessage("Device initialized successfully")
+                print("✓ Device initialized successfully")
+            else:
+                error_msg = "Failed to initialize device"
+                print(f"✗ {error_msg}")
+                QMessageBox.critical(self, "Error", error_msg)
+                self.status_bar.showMessage("Device initialization failed")
+        except Exception as e:
+            error_msg = f"Exception during device initialization: {e}"
+            print(f"✗ {error_msg}")
+            QMessageBox.critical(self, "Error", error_msg)
             self.status_bar.showMessage("Device initialization failed")
     
     def test_connection(self):
         """Test device communication"""
-        if self.device_manager.test_connection():
-            self.status_bar.showMessage("Device communication test successful")
-        else:
+        print("Testing device connection...")
+        try:
+            if self.device_manager.test_connection():
+                self.status_bar.showMessage("Device communication test successful")
+                print("✓ Device communication test successful")
+            else:
+                self.status_bar.showMessage("Device communication test failed")
+                print("✗ Device communication test failed")
+        except Exception as e:
+            error_msg = f"Exception during connection test: {e}"
+            print(f"✗ {error_msg}")
             self.status_bar.showMessage("Device communication test failed")
     
     def start_scanning(self):
@@ -251,22 +269,35 @@ class MainWindow(QMainWindow):
     
     def stop_scanning(self):
         """Stop data acquisition"""
-        if self.acquisition_thread:
-            self.acquisition_thread.stop()
-            self.acquisition_thread.wait()
-            self.acquisition_thread = None
-        
-        self.device_manager.stop_scanning()
-        
-        self.start_button.setEnabled(True)
-        self.stop_button.setEnabled(False)
-        self.status_bar.showMessage("Scanning stopped")
+        print("Stopping scanning...")
+        try:
+            if self.acquisition_thread:
+                print("  Stopping acquisition thread...")
+                self.acquisition_thread.stop()
+                self.acquisition_thread.wait()
+                self.acquisition_thread = None
+                print("  Acquisition thread stopped")
+            
+            print("  Stopping device manager scanning...")
+            self.device_manager.stop_scanning()
+            
+            self.start_button.setEnabled(True)
+            self.stop_button.setEnabled(False)
+            self.status_bar.showMessage("Scanning stopped")
+            print("✓ Scanning stopped successfully")
+        except Exception as e:
+            error_msg = f"Exception during stop scanning: {e}"
+            print(f"✗ {error_msg}")
+            self.status_bar.showMessage("Error stopping scanning")
     
     def process_data(self, data):
         """Process incoming data"""
         if data is None or data.size == 0:
+            print("  Received empty data")
             return
             
+        print(f"  Received data: shape={data.shape}, size={data.size}")
+        
         # Add to buffer
         self.data_buffer.append(data)
         if len(self.data_buffer) > self.max_buffer_size:
