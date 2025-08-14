@@ -140,18 +140,29 @@ class DeviceManager:
                 ul.win_buf_to_array(self.buffer_handle, raw_data, 0, count)
                 raw_data = list(raw_data)
                 
-                # Convert to numpy array and reshape to 4 channels
-                data = np.array(raw_data).reshape(-1, 4)
-                print(f"  Data shape: {data.shape}, Sample values: {data[0] if data.size > 0 else 'empty'}")
+                # Convert to numpy array and handle reshaping properly
+                data = np.array(raw_data)
+                print(f"  Raw data length: {len(data)}, count: {count}")
                 
-                # Convert to engineering units
-                volts_data = np.zeros_like(data, dtype=float)
-                for i in range(data.shape[0]):
-                    for j in range(data.shape[1]):
-                        volts_data[i, j] = ul.to_eng_units(self.board_num, self.ad_range, data[i, j])
-                
-                print(f"  Volts data shape: {volts_data.shape}, Sample values: {volts_data[0] if volts_data.size > 0 else 'empty'}")
-                return volts_data
+                # Ensure we have complete 4-channel samples
+                # Round down to nearest multiple of 4
+                complete_samples = (len(data) // 4) * 4
+                if complete_samples > 0:
+                    data = data[:complete_samples]
+                    data = data.reshape(-1, 4)
+                    print(f"  Data shape: {data.shape}, Sample values: {data[0] if data.size > 0 else 'empty'}")
+                    
+                    # Convert to engineering units
+                    volts_data = np.zeros_like(data, dtype=float)
+                    for i in range(data.shape[0]):
+                        for j in range(data.shape[1]):
+                            volts_data[i, j] = ul.to_eng_units(self.board_num, self.ad_range, data[i, j])
+                    
+                    print(f"  Volts data shape: {volts_data.shape}, Sample values: {volts_data[0] if volts_data.size > 0 else 'empty'}")
+                    return volts_data
+                else:
+                    print(f"  No complete samples available (need at least 4 values)")
+                    return None
             
             return None
             
