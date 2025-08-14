@@ -29,6 +29,7 @@ class DataAcquisitionThread(QThread):
     def run(self):
         """Main data acquisition loop"""
         self.running = True
+        print("Data acquisition thread started")
         while self.running:
             try:
                 data = self.device_manager.get_scan_data()
@@ -36,8 +37,11 @@ class DataAcquisitionThread(QThread):
                     self.data_ready.emit(data)
                 self.msleep(10)  # 10ms delay
             except Exception as e:
-                self.error_occurred.emit(str(e))
+                error_msg = f"Data acquisition error: {e}"
+                print(f"✗ {error_msg}")
+                self.error_occurred.emit(error_msg)
                 break
+        print("Data acquisition thread stopped")
     
     def stop(self):
         """Stop the acquisition thread"""
@@ -226,6 +230,7 @@ class MainWindow(QMainWindow):
     
     def start_scanning(self):
         """Start data acquisition"""
+        print("Starting data acquisition...")
         if self.device_manager.start_scanning():
             self.start_button.setEnabled(False)
             self.stop_button.setEnabled(True)
@@ -238,8 +243,11 @@ class MainWindow(QMainWindow):
             self.acquisition_thread.start()
             
             self.status_bar.showMessage("Scanning started")
+            print("✓ Scanning started successfully")
         else:
-            QMessageBox.critical(self, "Error", "Failed to start scanning")
+            error_msg = "Failed to start scanning"
+            print(f"✗ {error_msg}")
+            QMessageBox.critical(self, "Error", error_msg)
     
     def stop_scanning(self):
         """Stop data acquisition"""
@@ -330,6 +338,7 @@ class MainWindow(QMainWindow):
     
     def handle_error(self, error_msg):
         """Handle acquisition errors"""
+        print(f"✗ Acquisition Error: {error_msg}")
         QMessageBox.critical(self, "Acquisition Error", error_msg)
         self.stop_scanning()
     

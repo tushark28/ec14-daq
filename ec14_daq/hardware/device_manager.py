@@ -97,6 +97,11 @@ class DeviceManager:
             
         except ULError as e:
             print(f"Failed to start scanning: {e}")
+            print(f"  Board: {self.board_num}, Sample rate: {self.sample_rate}, Range: {self.ad_range}")
+            return False
+        except Exception as e:
+            print(f"Unexpected error starting scan: {e}")
+            print(f"  Error type: {type(e).__name__}")
             return False
     
     def stop_scanning(self):
@@ -129,11 +134,9 @@ class DeviceManager:
             if status == 1 and count > 0:  # 1 = RUNNING status
                 # Get data from buffer
                 # win_buf_to_array(memhandle, data_array, first_point, count)
-                # data_array is an output parameter - we need to create an array first
-                import array
-                data_array = array.array('h', [0] * count)  # 'h' for signed short
-                ul.win_buf_to_array(self.buffer_handle, data_array, 0, count)
-                raw_data = list(data_array)
+                # data_array is an output parameter - we need to create a list first
+                raw_data = [0] * count  # Create list of zeros
+                ul.win_buf_to_array(self.buffer_handle, raw_data, 0, count)
                 
                 # Convert to numpy array and reshape to 4 channels
                 data = np.array(raw_data).reshape(-1, 4)
@@ -150,6 +153,11 @@ class DeviceManager:
             
         except ULError as e:
             print(f"Error getting scan data: {e}")
+            print(f"  Board: {self.board_num}, Status: {status}, Count: {count}")
+            return None
+        except Exception as e:
+            print(f"Unexpected error getting scan data: {e}")
+            print(f"  Error type: {type(e).__name__}")
             return None
     
     def set_sample_rate(self, rate):
