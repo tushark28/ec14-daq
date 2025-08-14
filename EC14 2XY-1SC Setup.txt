@@ -1,0 +1,3236 @@
+EC14 CHARTS
+Page 1
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+Print options: selected objects, panels=Y, objectlists=Y, user-defined=N, action-lists=Y, comments=Y,
+data-refs=Y, settings=all
+
+2XY-1SC Setup
+
+(\EC14 CHARTS\2XY-1SC Setup)
+
+Objects in panel "2XY-1SC Setup":
+Apply Color Settings
+
+Background
+
+magenta
+
+Cancel
+
+Grids
+
+brown
+
+Ch1-Y
+
+Case X
+
+gray
+
+Ch1-X
+
+black
+
+lt-gray
+
+Ch2-Y
+
+blue
+
+lt-blue
+
+Ch2-X
+
+green
+
+lt-green
+
+Ch1-XY Trace
+
+cyan
+
+lt-cyan
+
+Ch2-XY Trace
+
+red
+
+lt-red
+
+EC14 CHARTS
+Page 2
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Objects in panel "2XY-1SC Setup": ...continued
+lt-magenta
+
+Text1
+
+yellow
+
+Text2
+
+white
+
+Text3
+
+Text4
+
+Settings for Panel object "2XY-1SC Setup":
+BG Color: Lt Gray
+X: -1
+Y: -1
+Disable scroll bars: 0
+Initially maximized: 0
+No Min/Max: 0
+No Close: 0
+
+Apply Color Settings
+
+(\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings)
+
+Action list for Pushbutton object "Apply Color Settings":
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+11)
+12)
+13)
+14)
+15)
+16)
+17)
+18)
+19)
+20)
+21)
+22)
+23)
+24)
+25)
+26)
+27)
+28)
+29)
+30)
+31)
+32)
+33)
+
+----------------------------------Set
+Select
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+
+---------------------------------------"StripChart Settings"
+---------------------------------------"Settings for Ch1-Y"
+4 Ch - SC(Trace Number) to 2
+Case X
+x=Ch1-Y
+Case X
+is 0
+4 Ch - SC(Color)
+to "Black"
+CH1-Y(BG color)
+to "Black"
+Case X
+is 1
+4 Ch - SC(Color)
+to "Blue"
+CH1-Y(BG color)
+to "Blue"
+Case X
+is 2
+4 Ch - SC(Color)
+to "Green"
+CH1-Y(BG color)
+to "Green"
+Case X
+is 3
+4 Ch - SC(Color)
+to "Cyan"
+CH1-Y(BG color)
+to "Cyan"
+Case X
+is 4
+4 Ch - SC(Color)
+to "Red"
+CH1-Y(BG color)
+to "Red"
+Case X
+is 5
+4 Ch - SC(Color)
+to "Magenta"
+CH1-Y(BG color)
+to "Magenta"
+Case X
+is 6
+4 Ch - SC(Color)
+to "Brown"
+CH1-Y(BG color)
+to "Brown"
+Case X
+is 7
+4 Ch - SC(Color)
+to "Lt Gray"
+CH1-Y(BG color)
+to "Lt Gray"
+Case X
+is 8
+4 Ch - SC(Color)
+to "Gray"
+CH1-Y(BG color)
+to "Gray"
+Case X
+is 9
+4 Ch - SC(Color)
+to "Lt Blue"
+
+EC14 CHARTS
+Page 3
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+34)
+35)
+36)
+37)
+38)
+39)
+40)
+41)
+42)
+43)
+44)
+45)
+46)
+47)
+48)
+49)
+50)
+51)
+52)
+53)
+54)
+55)
+56)
+57)
+58)
+59)
+60)
+61)
+62)
+63)
+64)
+65)
+66)
+67)
+68)
+69)
+70)
+71)
+72)
+73)
+74)
+75)
+76)
+77)
+78)
+79)
+80)
+81)
+82)
+83)
+84)
+85)
+86)
+87)
+88)
+89)
+90)
+91)
+92)
+
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+End
+-----------------Set
+Select
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+
+CH1-Y(BG color)
+to "Lt Blue"
+Case X
+is 10
+4 Ch - SC(Color)
+to "Lt Green"
+CH1-Y(BG color)
+to "Lt Green"
+Case X
+is 11
+4 Ch - SC(Color)
+to "Lt Cyan"
+CH1-Y(BG color)
+to "Lt Cyan"
+Case X
+is 12
+4 Ch - SC(Color)
+to "Lt Red"
+CH1-Y(BG color)
+to "Lt Red"
+Case X
+is 13
+4 Ch - SC(Color)
+to "Lt Magenta"
+CH1-Y(BG color)
+to "Lt Magenta"
+Case X
+is 14
+4 Ch - SC(Color)
+to "Yellow"
+CH1-Y(BG color)
+to "Yellow"
+Case X
+is 15
+4 Ch - SC(Color)
+to "White"
+CH1-Y(BG color)
+to "White"
+Case X
+---------------------------------------"Settings for Ch1-X"
+4 Ch - SC(Trace Number) to 1
+Case X
+x=Ch1-X
+Case X
+is 0
+4 Ch - SC(Color)
+to "Black"
+CH1-X(BG color)
+to "Black"
+Case X
+is 1
+4 Ch - SC(Color)
+to "Blue"
+CH1-X(BG color)
+to "Blue"
+Case X
+is 2
+4 Ch - SC(Color)
+to "Green"
+CH1-X(BG color)
+to "Green"
+Case X
+is 3
+4 Ch - SC(Color)
+to "Cyan"
+CH1-X(BG color)
+to "Cyan"
+Case X
+is 4
+4 Ch - SC(Color)
+to "Red"
+CH1-X(BG color)
+to "Red"
+Case X
+is 5
+4 Ch - SC(Color)
+to "Magenta"
+CH1-X(BG color)
+to "Magenta"
+Case X
+is 6
+4 Ch - SC(Color)
+to "Brown"
+CH1-X(BG color)
+to "Brown"
+Case X
+is 7
+4 Ch - SC(Color)
+to "Lt Gray"
+CH1-X(BG color)
+to "Lt Gray"
+Case X
+is 8
+4 Ch - SC(Color)
+to "Gray"
+CH1-X(BG color)
+to "Gray"
+Case X
+is 9
+4 Ch - SC(Color)
+to "Lt Blue"
+CH1-X(BG color)
+to "Lt Blue"
+Case X
+is 10
+4 Ch - SC(Color)
+to "Lt Green"
+CH1-X(BG color)
+to "Lt Green"
+Case X
+is 11
+4 Ch - SC(Color)
+to "Lt Cyan"
+CH1-X(BG color)
+to "Lt Cyan"
+
+EC14 CHARTS
+Page 4
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+93)
+94)
+95)
+96)
+97)
+98)
+99)
+100)
+101)
+102)
+103)
+104)
+105)
+106)
+107)
+108)
+109)
+110)
+111)
+112)
+113)
+114)
+115)
+116)
+117)
+118)
+119)
+120)
+121)
+122)
+123)
+124)
+125)
+126)
+127)
+128)
+129)
+130)
+131)
+132)
+133)
+134)
+135)
+136)
+137)
+138)
+139)
+140)
+141)
+142)
+143)
+144)
+145)
+146)
+147)
+148)
+149)
+150)
+151)
+
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+End
+-----------------Set
+Select
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+
+Case X
+is 12
+4 Ch - SC(Color)
+to "Lt Red"
+CH1-X(BG color)
+to "Lt Red"
+Case X
+is 13
+4 Ch - SC(Color)
+to "Lt Magenta"
+CH1-X(BG color)
+to "Lt Magenta"
+Case X
+is 14
+4 Ch - SC(Color)
+to "Yellow"
+CH1-X(BG color)
+to "Yellow"
+Case X
+is 15
+4 Ch - SC(Color)
+to "White"
+CH1-X(BG color)
+to "White"
+Case X
+---------------------------------------"Settings for Ch2-X"
+4 Ch - SC(Trace Number) to 3
+Case X
+x=Ch2-X
+Case X
+is 0
+4 Ch - SC(Color)
+to "Black"
+CH2-X(BG color)
+to "Black"
+Case X
+is 1
+4 Ch - SC(Color)
+to "Blue"
+CH2-X(BG color)
+to "Blue"
+Case X
+is 2
+4 Ch - SC(Color)
+to "Green"
+CH2-X(BG color)
+to "Green"
+Case X
+is 3
+4 Ch - SC(Color)
+to "Cyan"
+CH2-X(BG color)
+to "Cyan"
+Case X
+is 4
+4 Ch - SC(Color)
+to "Red"
+CH2-X(BG color)
+to "Red"
+Case X
+is 5
+4 Ch - SC(Color)
+to "Magenta"
+CH2-X(BG color)
+to "Magenta"
+Case X
+is 6
+4 Ch - SC(Color)
+to "Brown"
+CH2-X(BG color)
+to "Brown"
+Case X
+is 7
+4 Ch - SC(Color)
+to "Lt Gray"
+CH2-X(BG color)
+to "Lt Gray"
+Case X
+is 8
+4 Ch - SC(Color)
+to "Gray"
+CH2-X(BG color)
+to "Gray"
+Case X
+is 9
+4 Ch - SC(Color)
+to "Lt Blue"
+CH2-X(BG color)
+to "Lt Blue"
+Case X
+is 10
+4 Ch - SC(Color)
+to "Lt Green"
+CH2-X(BG color)
+to "Lt Green"
+Case X
+is 11
+4 Ch - SC(Color)
+to "Lt Cyan"
+CH2-X(BG color)
+to "Lt Cyan"
+Case X
+is 12
+4 Ch - SC(Color)
+to "Lt Red"
+CH2-X(BG color)
+to "Lt Red"
+Case X
+is 13
+4 Ch - SC(Color)
+to "Lt Magenta"
+CH2-X(BG color)
+to "Lt Magenta"
+Case X
+is 14
+
+EC14 CHARTS
+Page 5
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+152)
+153)
+154)
+155)
+156)
+157)
+158)
+159)
+160)
+161)
+162)
+163)
+164)
+165)
+166)
+167)
+168)
+169)
+170)
+171)
+172)
+173)
+174)
+175)
+176)
+177)
+178)
+179)
+180)
+181)
+182)
+183)
+184)
+185)
+186)
+187)
+188)
+189)
+190)
+191)
+192)
+193)
+194)
+195)
+196)
+197)
+198)
+199)
+200)
+201)
+202)
+203)
+204)
+205)
+206)
+207)
+208)
+209)
+210)
+
+Set
+Set
+When
+Set
+Set
+End
+-----------------Set
+Select
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+When
+Set
+Set
+End
+------------------
+
+4 Ch - SC(Color)
+to "Yellow"
+CH2-X(BG color)
+to "Yellow"
+Case X
+is 15
+4 Ch - SC(Color)
+to "White"
+CH2-X(BG color)
+to "White"
+Case X
+---------------------------------------"Settings for Ch2-Y"
+4 Ch - SC(Trace Number) to 4
+Case X
+x=Ch2-Y
+Case X
+is 0
+4 Ch - SC(Color)
+to "Black"
+CH2-Y(BG color)
+to "Black"
+Case X
+is 1
+4 Ch - SC(Color)
+to "Blue"
+CH2-Y(BG color)
+to "Blue"
+Case X
+is 2
+4 Ch - SC(Color)
+to "Green"
+CH2-Y(BG color)
+to "Green"
+Case X
+is 3
+4 Ch - SC(Color)
+to "Cyan"
+CH2-Y(BG color)
+to "Cyan"
+Case X
+is 4
+4 Ch - SC(Color)
+to "Red"
+CH2-Y(BG color)
+to "Red"
+Case X
+is 5
+4 Ch - SC(Color)
+to "Magenta"
+CH2-Y(BG color)
+to "Magenta"
+Case X
+is 6
+4 Ch - SC(Color)
+to "Brown"
+CH2-Y(BG color)
+to "Brown"
+Case X
+is 7
+4 Ch - SC(Color)
+to "Lt Gray"
+CH2-Y(BG color)
+to "Lt Gray"
+Case X
+is 8
+4 Ch - SC(Color)
+to "Gray"
+CH2-Y(BG color)
+to "Gray"
+Case X
+is 9
+4 Ch - SC(Color)
+to "Lt Blue"
+CH2-Y(BG color)
+to "Lt Blue"
+Case X
+is 10
+4 Ch - SC(Color)
+to "Lt Green"
+CH2-Y(BG color)
+to "Lt Green"
+Case X
+is 11
+4 Ch - SC(Color)
+to "Lt Cyan"
+CH2-Y(BG color)
+to "Lt Cyan"
+Case X
+is 12
+4 Ch - SC(Color)
+to "Lt Red"
+CH2-Y(BG color)
+to "Lt Red"
+Case X
+is 13
+4 Ch - SC(Color)
+to "Lt Magenta"
+CH2-Y(BG color)
+to "Lt Magenta"
+Case X
+is 14
+4 Ch - SC(Color)
+to "Yellow"
+CH2-Y(BG color)
+to "Yellow"
+Case X
+is 15
+4 Ch - SC(Color)
+to "White"
+CH2-Y(BG color)
+to "White"
+Case X
+---------------------------------------"Settings for StripChart Background"
+
+EC14 CHARTS
+Page 6
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+211)
+212)
+213)
+214)
+215)
+216)
+217)
+218)
+219)
+220)
+221)
+222)
+223)
+224)
+225)
+226)
+227)
+228)
+229)
+230)
+231)
+232)
+233)
+234)
+235)
+236)
+237)
+238)
+239)
+240)
+241)
+242)
+243)
+244)
+245)
+246)
+247)
+248)
+249)
+250)
+251)
+252)
+253)
+254)
+255)
+256)
+257)
+258)
+259)
+260)
+261)
+262)
+263)
+264)
+265)
+266)
+267)
+268)
+269)
+
+Select
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+Set
+Set
+When
+Set
+
+Case X
+x=Background
+Case X
+is 0
+4 Ch - SC(BG Color)
+to "Black"
+Channel 1 - XY(BG Color) to "Black"
+Channel 2 - XY(BG Color) to "Black"
+Case X
+is 1
+4 Ch - SC(BG Color)
+to "Blue"
+Channel 1 - XY(BG Color) to "Blue"
+Channel 2 - XY(BG Color) to "Blue"
+Case X
+is 2
+4 Ch - SC(BG Color)
+to "Green"
+Channel 1 - XY(BG Color) to "Green"
+Channel 2 - XY(BG Color) to "Green"
+Case X
+is 3
+4 Ch - SC(BG Color)
+to "Cyan"
+Channel 1 - XY(BG Color) to "Cyan"
+Channel 2 - XY(BG Color) to "Cyan"
+Case X
+is 4
+4 Ch - SC(BG Color)
+to "Red"
+Channel 1 - XY(BG Color) to "Red"
+Channel 2 - XY(BG Color) to "Red"
+Case X
+is 5
+4 Ch - SC(BG Color)
+to "Magenta"
+Channel 1 - XY(BG Color) to "Magenta"
+Channel 2 - XY(BG Color) to "Magenta"
+Case X
+is 6
+4 Ch - SC(BG Color)
+to "Brown"
+Channel 1 - XY(BG Color) to "Brown"
+Channel 2 - XY(BG Color) to "Brown"
+Case X
+is 7
+4 Ch - SC(BG Color)
+to "Lt Gray"
+Channel 1 - XY(BG Color) to "Lt Gray"
+Channel 2 - XY(BG Color) to "Lt Gray"
+Case X
+is 8
+4 Ch - SC(BG Color)
+to "Gray"
+Channel 1 - XY(BG Color) to "Gray"
+Channel 2 - XY(BG Color) to "Gray"
+Case X
+is 9
+4 Ch - SC(BG Color)
+to "Lt Blue"
+Channel 1 - XY(BG Color) to "Lt Blue"
+Channel 2 - XY(BG Color) to "Lt Blue"
+Case X
+is 10
+4 Ch - SC(BG Color)
+to "Lt Green"
+Channel 1 - XY(BG Color) to "Lt Green"
+Channel 2 - XY(BG Color) to "Lt Green"
+Case X
+is 11
+4 Ch - SC(BG Color)
+to "Lt Cyan"
+Channel 1 - XY(BG Color) to "Lt Cyan"
+Channel 2 - XY(BG Color) to "Lt Cyan"
+Case X
+is 12
+4 Ch - SC(BG Color)
+to "Lt Red"
+Channel 1 - XY(BG Color) to "Lt Red"
+Channel 2 - XY(BG Color) to "Lt Red"
+Case X
+is 13
+4 Ch - SC(BG Color)
+to "Lt Magenta"
+Channel 1 - XY(BG Color) to "Lt Magenta"
+Channel 2 - XY(BG Color) to "Lt Magenta"
+Case X
+is 14
+4 Ch - SC(BG Color)
+to "Yellow"
+
+EC14 CHARTS
+Page 7
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+270)
+271)
+272)
+273)
+274)
+275)
+276)
+277)
+278)
+279)
+280)
+281)
+282)
+283)
+284)
+285)
+286)
+287)
+288)
+289)
+290)
+291)
+292)
+293)
+294)
+295)
+296)
+297)
+298)
+299)
+300)
+301)
+302)
+303)
+304)
+305)
+306)
+307)
+308)
+309)
+310)
+311)
+312)
+313)
+314)
+315)
+316)
+317)
+318)
+319)
+320)
+321)
+322)
+323)
+324)
+325)
+326)
+327)
+328)
+
+Set
+Set
+When
+Set
+Set
+Set
+End
+-----------------Set
+Select
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+End
+-----------------Set
+Select
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+
+Channel 1 - XY(BG Color) to "Yellow"
+Channel 2 - XY(BG Color) to "Yellow"
+Case X
+is 15
+4 Ch - SC(BG Color)
+to "White"
+Channel 1 - XY(BG Color) to "White"
+Channel 2 - XY(BG Color) to "White"
+Case X
+---------------------------------------"Settings for Ch1-XY"
+Channel 1 - XY(Trace Number)
+to 1
+Case X
+x=Ch1-XY Trace
+Case X
+is 0
+Channel 1 - XY(Color)
+to "Black"
+Case X
+is 1
+Channel 1 - XY(Color)
+to "Blue"
+Case X
+is 2
+Channel 1 - XY(Color)
+to "Green"
+Case X
+is 3
+Channel 1 - XY(Color)
+to "Cyan"
+Case X
+is 4
+Channel 1 - XY(Color)
+to "Red"
+Case X
+is 5
+Channel 1 - XY(Color)
+to "Magenta"
+Case X
+is 6
+Channel 1 - XY(Color)
+to "Brown"
+Case X
+is 7
+Channel 1 - XY(Color)
+to "Lt Gray"
+Case X
+is 8
+Channel 1 - XY(Color)
+to "Gray"
+Case X
+is 9
+Channel 1 - XY(Color)
+to "Lt Blue"
+Case X
+is 10
+Channel 1 - XY(Color)
+to "Lt Green"
+Case X
+is 11
+Channel 1 - XY(Color)
+to "Lt Cyan"
+Case X
+is 12
+Channel 1 - XY(Color)
+to "Lt Red"
+Case X
+is 13
+Channel 1 - XY(Color)
+to "Lt Magenta"
+Case X
+is 14
+Channel 1 - XY(Color)
+to "Yellow"
+Case X
+is 15
+Channel 1 - XY(Color)
+to "White"
+Case X
+---------------------------------------"Settings for Ch2-XY"
+Channel 2 - XY(Trace Number)
+to 1
+Case X
+x=Ch2-XY Trace
+Case X
+is 0
+Channel 2 - XY(Color)
+to "Black"
+Case X
+is 1
+Channel 2 - XY(Color)
+to "Blue"
+Case X
+is 2
+Channel 2 - XY(Color)
+to "Green"
+Case X
+is 3
+Channel 2 - XY(Color)
+to "Cyan"
+Case X
+is 4
+Channel 2 - XY(Color)
+to "Red"
+Case X
+is 5
+Channel 2 - XY(Color)
+to "Magenta"
+Case X
+is 6
+
+EC14 CHARTS
+Page 8
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+329)
+330)
+331)
+332)
+333)
+334)
+335)
+336)
+337)
+338)
+339)
+340)
+341)
+342)
+343)
+344)
+345)
+346)
+347)
+348)
+349)
+350)
+351)
+352)
+353)
+354)
+355)
+356)
+357)
+358)
+359)
+360)
+361)
+362)
+363)
+364)
+365)
+366)
+367)
+368)
+369)
+370)
+371)
+372)
+373)
+374)
+375)
+376)
+377)
+378)
+379)
+380)
+381)
+382)
+383)
+384)
+385)
+386)
+387)
+
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+When
+Set
+End
+Select
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Channel 2 - XY(Color)
+Case X
+Case X
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+
+to "Brown"
+is 7
+to "Lt Gray"
+is 8
+to "Gray"
+is 9
+to "Lt Blue"
+is 10
+to "Lt Green"
+is 11
+to "Lt Cyan"
+is 12
+to "Lt Red"
+is 13
+to "Lt Magenta"
+is 14
+to "Yellow"
+is 15
+to "White"
+x=Grids
+is 0
+to "X"
+to "Black"
+to "Y1"
+to "Black"
+to "X"
+to "Black"
+to "Y1"
+to "Black"
+to "X"
+to "Black"
+to "Y1"
+to "Black"
+to "X"
+to "Black"
+to "Y1"
+to "Black"
+is 1
+to "X"
+to "Blue"
+to "Y1"
+to "Blue"
+to "X"
+to "Blue"
+to "Y1"
+to "Blue"
+to "X"
+to "Blue"
+to "Y1"
+to "Blue"
+to "X"
+to "Blue"
+to "Y1"
+to "Blue"
+is 2
+to "X"
+to "Green"
+to "Y1"
+
+EC14 CHARTS
+Page 9
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+388)
+Set
+389)
+Set
+390)
+Set
+391)
+Set
+392)
+Set
+393)
+Set
+394)
+Set
+395)
+Set
+396)
+Set
+397)
+Set
+398)
+Set
+399)
+Set
+400)
+Set
+401) When
+402)
+Set
+403)
+Set
+404)
+Set
+405)
+Set
+406)
+Set
+407)
+Set
+408)
+Set
+409)
+Set
+410)
+Set
+411)
+Set
+412)
+Set
+413)
+Set
+414)
+Set
+415)
+Set
+416)
+Set
+417)
+Set
+418) When
+419)
+Set
+420)
+Set
+421)
+Set
+422)
+Set
+423)
+Set
+424)
+Set
+425)
+Set
+426)
+Set
+427)
+Set
+428)
+Set
+429)
+Set
+430)
+Set
+431)
+Set
+432)
+Set
+433)
+Set
+434)
+Set
+435) When
+436)
+Set
+437)
+Set
+438)
+Set
+439)
+Set
+440)
+Set
+441)
+Set
+442)
+Set
+443)
+Set
+444)
+Set
+445)
+Set
+446)
+Set
+
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+
+to "Green"
+to "X"
+to "Green"
+to "Y1"
+to "Green"
+to "X"
+to "Green"
+to "Y1"
+to "Green"
+to "X"
+to "Green"
+to "Y1"
+to "Green"
+is 3
+to "X"
+to "Cyan"
+to "Y1"
+to "Cyan"
+to "X"
+to "Cyan"
+to "Y1"
+to "Cyan"
+to "X"
+to "Cyan"
+to "Y1"
+to "Cyan"
+to "X"
+to "Cyan"
+to "Y1"
+to "Cyan"
+is 4
+to "X"
+to "Red"
+to "Y1"
+to "Red"
+to "X"
+to "Red"
+to "Y1"
+to "Red"
+to "X"
+to "Red"
+to "Y1"
+to "Red"
+to "X"
+to "Red"
+to "Y1"
+to "Red"
+is 5
+to "X"
+to "Magenta"
+to "Y1"
+to "Magenta"
+to "X"
+to "Magenta"
+to "Y1"
+to "Magenta"
+to "X"
+to "Magenta"
+to "Y1"
+
+EC14 CHARTS
+Page 10
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+447)
+448)
+449)
+450)
+451)
+452)
+453)
+454)
+455)
+456)
+457)
+458)
+459)
+460)
+461)
+462)
+463)
+464)
+465)
+466)
+467)
+468)
+469)
+470)
+471)
+472)
+473)
+474)
+475)
+476)
+477)
+478)
+479)
+480)
+481)
+482)
+483)
+484)
+485)
+486)
+487)
+488)
+489)
+490)
+491)
+492)
+493)
+494)
+495)
+496)
+497)
+498)
+499)
+500)
+501)
+502)
+503)
+504)
+505)
+
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+
+to "Magenta"
+to "X"
+to "Magenta"
+to "Y1"
+to "Magenta"
+is 6
+to "X"
+to "Brown"
+to "Y1"
+to "Brown"
+to "X"
+to "Brown"
+to "Y1"
+to "Brown"
+to "X"
+to "Brown"
+to "Y1"
+to "Brown"
+to "X"
+to "Brown"
+to "Y1"
+to "Brown"
+is 7
+to "X"
+to "Lt Gray"
+to "Y1"
+to "Lt Gray"
+to "X"
+to "Lt Gray"
+to "Y1"
+to "Lt Gray"
+to "X"
+to "Lt Gray"
+to "Y1"
+to "Lt Gray"
+to "X"
+to "Lt Gray"
+to "Y1"
+to "Lt Gray"
+is 8
+to "X"
+to "Gray"
+to "Y1"
+to "Gray"
+to "X"
+to "Gray"
+to "Y1"
+to "Gray"
+to "X"
+to "Gray"
+to "Y1"
+to "Gray"
+to "X"
+to "Gray"
+to "Y1"
+to "Gray"
+is 9
+to "X"
+to "Lt Blue"
+
+EC14 CHARTS
+Page 11
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+506)
+Set
+507)
+Set
+508)
+Set
+509)
+Set
+510)
+Set
+511)
+Set
+512)
+Set
+513)
+Set
+514)
+Set
+515)
+Set
+516)
+Set
+517)
+Set
+518)
+Set
+519)
+Set
+520) When
+521)
+Set
+522)
+Set
+523)
+Set
+524)
+Set
+525)
+Set
+526)
+Set
+527)
+Set
+528)
+Set
+529)
+Set
+530)
+Set
+531)
+Set
+532)
+Set
+533)
+Set
+534)
+Set
+535)
+Set
+536)
+Set
+537) When
+538)
+Set
+539)
+Set
+540)
+Set
+541)
+Set
+542)
+Set
+543)
+Set
+544)
+Set
+545)
+Set
+546)
+Set
+547)
+Set
+548)
+Set
+549)
+Set
+550)
+Set
+551)
+Set
+552)
+Set
+553)
+Set
+554) When
+555)
+Set
+556)
+Set
+557)
+Set
+558)
+Set
+559)
+Set
+560)
+Set
+561)
+Set
+562)
+Set
+563)
+Set
+564)
+Set
+
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+
+to "Y1"
+to "Lt Blue"
+to "X"
+to "Lt Blue"
+to "Y1"
+to "Lt Blue"
+to "X"
+to "Lt Blue"
+to "Y1"
+to "Lt Blue"
+to "X"
+to "Lt Blue"
+to "Y1"
+to "Lt Blue"
+is 10
+to "X"
+to "Lt Green"
+to "Y1"
+to "Lt Green"
+to "X"
+to "Lt Green"
+to "Y1"
+to "Lt Green"
+to "X"
+to "Lt Green"
+to "Y1"
+to "Lt Green"
+to "X"
+to "Lt Green"
+to "Y1"
+to "Lt Green"
+is 11
+to "X"
+to "Lt Cyan"
+to "Y1"
+to "Lt Cyan"
+to "X"
+to "Lt Cyan"
+to "Y1"
+to "Lt Cyan"
+to "X"
+to "Lt Cyan"
+to "Y1"
+to "Lt Cyan"
+to "X"
+to "Lt Cyan"
+to "Y1"
+to "Lt Cyan"
+is 12
+to "X"
+to "Lt Red"
+to "Y1"
+to "Lt Red"
+to "X"
+to "Lt Red"
+to "Y1"
+to "Lt Red"
+to "X"
+to "Lt Red"
+
+EC14 CHARTS
+Page 12
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Action list for Pushbutton object "Apply Color Settings": ...continued
+565)
+566)
+567)
+568)
+569)
+570)
+571)
+572)
+573)
+574)
+575)
+576)
+577)
+578)
+579)
+580)
+581)
+582)
+583)
+584)
+585)
+586)
+587)
+588)
+589)
+590)
+591)
+592)
+593)
+594)
+595)
+596)
+597)
+598)
+599)
+600)
+601)
+602)
+603)
+604)
+605)
+606)
+607)
+608)
+609)
+610)
+611)
+612)
+613)
+614)
+615)
+616)
+617)
+618)
+619)
+620)
+621)
+622)
+623)
+
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+When
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+Set
+End
+Hide
+
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2Ch-XY(Axis)
+2Ch-XY(Color)
+2Ch-XY(Axis)
+2Ch-XY(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+4 Ch - SC(Axis)
+4 Ch - SC(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 1 - XY(Axis)
+Channel 1 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Channel 2 - XY(Axis)
+Channel 2 - XY(Color)
+Case X
+2XY-1SC Setup
+
+to "Y1"
+to "Lt Red"
+to "X"
+to "Lt Red"
+to "Y1"
+to "Lt Red"
+is 13
+to "X"
+to "Lt Magenta"
+to "Y1"
+to "Lt Magenta"
+to "X"
+to "Lt Magenta"
+to "Y1"
+to "Lt Magenta"
+to "X"
+to "Lt Magenta"
+to "Y1"
+to "Lt Magenta"
+to "X"
+to "Lt Magenta"
+to "Y1"
+to "Lt Magenta"
+is 14
+to "X"
+to "Yellow"
+to "Y1"
+to "Yellow"
+to "X"
+to "Yellow"
+to "Y1"
+to "Yellow"
+to "X"
+to "Yellow"
+to "Y1"
+to "Yellow"
+to "X"
+to "Yellow"
+to "Y1"
+to "Yellow"
+is 15
+to "X"
+to "White"
+to "Y1"
+to "White"
+to "X"
+to "White"
+to "Y1"
+to "White"
+to "X"
+to "White"
+to "Y1"
+to "White"
+to "X"
+to "White"
+to "Y1"
+to "White"
+
+EC14 CHARTS
+Page 13
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Settings for Pushbutton object "Apply Color Settings":
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+BG Color: Black
+
+Cancel
+
+(\EC14 CHARTS\2XY-1SC Setup\Cancel)
+
+Action list for Pushbutton object "Cancel":
+1) Hide 2XY-1SC Setup
+
+Settings for Pushbutton object "Cancel":
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+BG Color: Ambient(panel)
+
+Ch1-Y
+
+(\EC14 CHARTS\2XY-1SC Setup\Ch1-Y)
+
+Settings for Selector object "Ch1-Y":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 10
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+EC14 CHARTS
+Page 14
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Ch1-X
+
+(\EC14 CHARTS\2XY-1SC Setup\Ch1-X)
+
+Settings for Selector object "Ch1-X":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 12
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+Ch2-Y
+
+(\EC14 CHARTS\2XY-1SC Setup\Ch2-Y)
+
+Settings for Selector object "Ch2-Y":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 13
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+EC14 CHARTS
+Page 15
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Ch2-X
+
+(\EC14 CHARTS\2XY-1SC Setup\Ch2-X)
+
+Settings for Selector object "Ch2-X":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 9
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+Ch1-XY Trace
+
+(\EC14 CHARTS\2XY-1SC Setup\Ch1-XY Trace)
+
+Settings for Selector object "Ch1-XY Trace":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 0
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+EC14 CHARTS
+Page 16
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Ch2-XY Trace
+
+(\EC14 CHARTS\2XY-1SC Setup\Ch2-XY Trace)
+
+Settings for Selector object "Ch2-XY Trace":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 0
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+Background
+
+(\EC14 CHARTS\2XY-1SC Setup\Background)
+
+Settings for Selector object "Background":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 15
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+EC14 CHARTS
+Page 17
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Grids
+
+(\EC14 CHARTS\2XY-1SC Setup\Grids)
+
+Settings for Selector object "Grids":
+Style: Buttons
+# Values: 16
+Current Label Set:
+Labels: Black,Blue,Green,Cyan,Red,Magenta,Brown,Lt Gray,Gray,Lt Blue,Lt Green,Lt Cyan,Lt Red,Lt
+Magenta,Yellow,White
+Values:
+Label Set Names:
+Visible: 1
+Enabled: 1
+Exec. actions at initialize: 0
+Initial Value: 15
+Bezel: 1
+Caption: 1
+BG Color: Black
+Bezel Type: Both
+
+Case X
+
+(\EC14 CHARTS\2XY-1SC Setup\Case X)
+
+Settings for Case object "Case X":
+Expression: x
+
+black
+
+(\EC14 CHARTS\2XY-1SC Setup\black)
+
+Settings for Label object "black":
+Text:
+BG color: Black
+Visible: 1
+
+blue
+
+(\EC14 CHARTS\2XY-1SC Setup\blue)
+
+Settings for Label object "blue":
+Text:
+BG color: Blue
+Visible: 1
+
+green
+
+(\EC14 CHARTS\2XY-1SC Setup\green)
+
+Settings for Label object "green":
+Text:
+BG color: Green
+Visible: 1
+
+EC14 CHARTS
+Page 18
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+cyan
+
+(\EC14 CHARTS\2XY-1SC Setup\cyan)
+
+Settings for Label object "cyan":
+Text:
+BG color: Cyan
+Visible: 1
+
+red
+
+(\EC14 CHARTS\2XY-1SC Setup\red)
+
+Settings for Label object "red":
+Text:
+BG color: Red
+Visible: 1
+
+magenta
+
+(\EC14 CHARTS\2XY-1SC Setup\magenta)
+
+Settings for Label object "magenta":
+Text:
+BG color: Magenta
+Visible: 1
+
+brown
+
+(\EC14 CHARTS\2XY-1SC Setup\brown)
+
+Settings for Label object "brown":
+Text:
+BG color: Brown
+Visible: 1
+
+gray
+
+(\EC14 CHARTS\2XY-1SC Setup\gray)
+
+Settings for Label object "gray":
+Text:
+BG color: Gray
+Visible: 1
+
+lt-gray
+
+(\EC14 CHARTS\2XY-1SC Setup\lt-gray)
+
+Settings for Label object "lt-gray":
+Text:
+BG color: Lt Gray
+Visible: 1
+
+EC14 CHARTS
+Page 19
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+lt-blue
+
+(\EC14 CHARTS\2XY-1SC Setup\lt-blue)
+
+Settings for Label object "lt-blue":
+Text:
+BG color: Lt Blue
+Visible: 1
+
+lt-green
+
+(\EC14 CHARTS\2XY-1SC Setup\lt-green)
+
+Settings for Label object "lt-green":
+Text:
+BG color: Lt Green
+Visible: 1
+
+lt-cyan
+
+(\EC14 CHARTS\2XY-1SC Setup\lt-cyan)
+
+Settings for Label object "lt-cyan":
+Text:
+BG color: Lt Cyan
+Visible: 1
+
+lt-red
+
+(\EC14 CHARTS\2XY-1SC Setup\lt-red)
+
+Settings for Label object "lt-red":
+Text:
+BG color: Lt Red
+Visible: 1
+
+lt-magenta
+
+(\EC14 CHARTS\2XY-1SC Setup\lt-magenta)
+
+Settings for Label object "lt-magenta":
+Text:
+BG color: Lt Magenta
+Visible: 1
+
+yellow
+
+(\EC14 CHARTS\2XY-1SC Setup\yellow)
+
+Settings for Label object "yellow":
+Text:
+BG color: Yellow
+Visible: 1
+
+EC14 CHARTS
+Page 20
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+white
+
+(\EC14 CHARTS\2XY-1SC Setup\white)
+
+Settings for Label object "white":
+Text:
+BG color: White
+Visible: 1
+
+Text1
+
+(\EC14 CHARTS\2XY-1SC Setup\Text1)
+
+Settings for Label object "Text1":
+Text: STRIP CHART TRACE COLORS
+BG color: Lt Cyan
+Visible: 1
+
+Text2
+
+(\EC14 CHARTS\2XY-1SC Setup\Text2)
+
+Settings for Label object "Text2":
+Text: XY CHART TRACE COLORS
+BG color: Lt Cyan
+Visible: 1
+
+Text3
+
+(\EC14 CHARTS\2XY-1SC Setup\Text3)
+
+Settings for Label object "Text3":
+Text: BACKGROUND
+BG color: Lt Cyan
+Visible: 1
+
+Text4
+
+(\EC14 CHARTS\2XY-1SC Setup\Text4)
+
+Settings for Label object "Text4":
+Text: GRIDS
+BG color: Lt Cyan
+Visible: 1
+
+EC14 CHARTS
+Page 21
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+
+Object Cross Reference
+Object \EC14 CHARTS\2XY-1SC Setup
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 623
+\EC14 CHARTS\2XY-1SC Setup\Cancel:line 1
+\EC14 CHARTS\2XY-1SC Setup:line 1
+Object \EC14 CHARTS\2XY-1SC Setup\Apply Color Settings
+\EC14 CHARTS\EC14 Setup\Load Colors:line 40
+Object \EC14 CHARTS\2XY-1SC Setup\Ch1-Y
+\EC14 CHARTS\EC14 Setup\Load Colors:line 24
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 4
+\EC14 CHARTS\task SaveSettings:line 19
+Object \EC14 CHARTS\2XY-1SC Setup\Ch1-X
+\EC14 CHARTS\EC14 Setup\Load Colors:line 26
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 56
+\EC14 CHARTS\task SaveSettings:line 20
+Object \EC14 CHARTS\2XY-1SC Setup\Ch2-Y
+\EC14 CHARTS\EC14 Setup\Load Colors:line 28
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 160
+\EC14 CHARTS\task SaveSettings:line 21
+Object \EC14 CHARTS\2XY-1SC Setup\Ch2-X
+\EC14 CHARTS\EC14 Setup\Load Colors:line 30
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 108
+\EC14 CHARTS\task SaveSettings:line 22
+Object \EC14 CHARTS\2XY-1SC Setup\Ch1-XY Trace
+\EC14 CHARTS\EC14 Setup\Load Colors:line 32
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 279
+\EC14 CHARTS\task SaveSettings:line 23
+Object \EC14 CHARTS\2XY-1SC Setup\Ch2-XY Trace
+\EC14 CHARTS\EC14 Setup\Load Colors:line 34
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 315
+\EC14 CHARTS\task SaveSettings:line 24
+Object \EC14 CHARTS\2XY-1SC Setup\Background
+\EC14 CHARTS\EC14 Setup\Load Colors:line 36
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 211
+\EC14 CHARTS\task SaveSettings:line 25
+Object \EC14 CHARTS\2XY-1SC Setup\Grids
+\EC14 CHARTS\EC14 Setup\Load Colors:line 38
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 349
+\EC14 CHARTS\task SaveSettings:line 26
+Object \EC14 CHARTS\2XY-1SC Setup\Case X
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 4
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 5
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 8
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 11
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 14
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 17
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 20
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 23
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 26
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 29
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 32
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 35
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 38
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 41
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 44
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 47
+
+EC14 CHARTS
+Page 22
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 50
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 53
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 56
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 57
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 60
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 63
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 66
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 69
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 72
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 75
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 78
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 81
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 84
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 87
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 90
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 93
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 96
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 99
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 102
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 105
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 108
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 109
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 112
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 115
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 118
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 121
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 124
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 127
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 130
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 133
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 136
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 139
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 142
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 145
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 148
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 151
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 154
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 157
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 160
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 161
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 164
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 167
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 170
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 173
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 176
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 179
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 182
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 185
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 188
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 191
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 194
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 197
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 200
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 203
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 206
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 209
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 211
+
+EC14 CHARTS
+Page 23
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 212
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 216
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 220
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 224
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 228
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 232
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 236
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 240
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 244
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 248
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 252
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 256
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 260
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 264
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 268
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 272
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 276
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 279
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 280
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 282
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 284
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 286
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 288
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 290
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 292
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 294
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 296
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 298
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 300
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 302
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 304
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 306
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 308
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 310
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 312
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 315
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 316
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 318
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 320
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 322
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 324
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 326
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 328
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 330
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 332
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 334
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 336
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 338
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 340
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 342
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 344
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 346
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 348
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 349
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 350
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 367
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 384
+
+EC14 CHARTS
+Page 24
+TestPoint v7.0, file=C:\Users\Dell D830\Dropbox\EC14 RECORD\EC316K_Working_Copy.tst
+16:18 Wed. Aug. 13,2025
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 401
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 418
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 435
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 452
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 469
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 486
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 503
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 520
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 537
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 554
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 571
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 588
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 605
+\EC14 CHARTS\2XY-1SC Setup\Apply Color Settings:line 622
+
+

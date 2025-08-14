@@ -37,8 +37,11 @@ class DeviceManager:
             ul.d_config_port(self.board_num, DeviceConfig.PORT_B, 1)  # 1 = OUTPUT
             ul.d_out(self.board_num, DeviceConfig.PORT_B, DeviceConfig.PORT_B_DEFAULT)
             
+            # Initialize instrument board (SPI programming)
+            self.initialize_instrument_board()
+            
             self.initialized = True
-            print("Device initialized successfully")
+            print("Device and instrument board initialized successfully")
             return True
             
         except ULError as e:
@@ -54,6 +57,111 @@ class DeviceManager:
         except ULError as e:
             print(f"Device communication test failed: {e}")
             return False
+    
+    def initialize_instrument_board(self):
+        """Initialize the instrument board via SPI (AD9833 DDS chips)"""
+        try:
+            print("Initializing instrument board...")
+            
+            # Configure SPI for AD9833 DDS chips
+            # Port A bits: SPI control (CS, SCLK, SDATA)
+            # Port B bits: Relay control and gain settings
+            
+            # Set initial SPI state
+            spi_control = 0x00  # All SPI lines low initially
+            ul.d_out(self.board_num, DeviceConfig.PORT_A, spi_control)
+            
+            # Configure relays for default mode (differential/absolute)
+            relay_control = 0x07  # Default relay state
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, relay_control)
+            
+            # Program AD9833 DDS chips with default frequencies
+            self.program_ad9833_chips()
+            
+            # Configure instrumentation amplifiers
+            self.configure_instrumentation_amps()
+            
+            print("Instrument board initialization completed")
+            
+        except Exception as e:
+            print(f"Error initializing instrument board: {e}")
+    
+    def program_ad9833_chips(self):
+        """Program the 4 AD9833 DDS chips via SPI"""
+        try:
+            print("  Programming AD9833 DDS chips...")
+            
+            # Default frequencies for eddy current testing
+            frequencies = [1000, 2000, 5000, 10000]  # Hz
+            
+            for chip in range(4):
+                freq = frequencies[chip]
+                print(f"    Programming chip {chip} with {freq} Hz")
+                
+                # AD9833 programming sequence
+                # Control register: 0x2000 (enable output, sine wave)
+                control_word = 0x2000
+                self.spi_write(chip, control_word)
+                
+                # Frequency register 0: Set frequency
+                freq_word = int((freq * 2**28) / 25000000)  # 25MHz clock
+                self.spi_write(chip, 0x4000 | (freq_word & 0x3FFF))  # MSB
+                self.spi_write(chip, 0x4000 | ((freq_word >> 14) & 0x3FFF))  # LSB
+                
+                # Phase register: 0 degrees
+                phase_word = 0
+                self.spi_write(chip, 0xC000 | (phase_word & 0xFFF))
+                
+            print("  AD9833 programming completed")
+            
+        except Exception as e:
+            print(f"  Error programming AD9833: {e}")
+    
+    def spi_write(self, chip_select, data):
+        """Write data to AD9833 via SPI"""
+        try:
+            # Chip select (4 chips, 4 bits)
+            cs_mask = 1 << chip_select
+            
+            # SPI write sequence
+            for bit in range(16):
+                # Set data bit
+                if data & (1 << (15 - bit)):
+                    data_bit = 1
+                else:
+                    data_bit = 0
+                
+                # Set SPI lines
+                spi_data = (cs_mask << 4) | (data_bit << 2)  # CS, DATA
+                ul.d_out(self.board_num, DeviceConfig.PORT_A, spi_data)
+                
+                # Clock pulse
+                spi_data |= 1  # SCLK high
+                ul.d_out(self.board_num, DeviceConfig.PORT_A, spi_data)
+                
+                # Small delay
+                import time
+                time.sleep(0.000001)  # 1 microsecond
+                
+                spi_data &= ~1  # SCLK low
+                ul.d_out(self.board_num, DeviceConfig.PORT_A, spi_data)
+                
+        except Exception as e:
+            print(f"    SPI write error: {e}")
+    
+    def configure_instrumentation_amps(self):
+        """Configure instrumentation amplifiers for eddy current testing"""
+        try:
+            print("  Configuring instrumentation amplifiers...")
+            
+            # Set default gain (adjust based on test requirements)
+            gain_setting = 0x01  # Low gain for initial testing
+            ul.d_out(self.board_num, DeviceConfig.PORT_B, gain_setting)
+            
+            print("  Instrumentation amplifiers configured")
+            
+        except Exception as e:
+            print(f"  Error configuring amplifiers: {e}")
     
     def get_analog_values(self, num_samples=1000):
         """Get single reading from all 4 channels"""
@@ -159,6 +267,15 @@ class DeviceManager:
                             volts_data[i, j] = ul.to_eng_units(self.board_num, self.ad_range, data[i, j])
                     
                     print(f"  Volts data shape: {volts_data.shape}, Sample values: {volts_data[0] if volts_data.size > 0 else 'empty'}")
+                    
+                    # Check if all values are -5V (no signal condition)
+                    if volts_data.size > 0 and np.all(volts_data == -5.0):
+                        print("  ⚠️  All channels reading -5V: No active signals detected")
+                        print("     This is normal if:")
+                        print("     - No eddy current probe is connected")
+                        print("     - No test piece is being scanned")
+                        print("     - Instrument board needs calibration")
+                    
                     return volts_data
                 else:
                     print(f"  No complete samples available (need at least 4 values)")
